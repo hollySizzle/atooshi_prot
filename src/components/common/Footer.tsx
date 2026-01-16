@@ -3,6 +3,7 @@ import BusinessIcon from '@mui/icons-material/Business'
 import DescriptionIcon from '@mui/icons-material/Description'
 import ShieldIcon from '@mui/icons-material/Shield'
 import MailIcon from '@mui/icons-material/Mail'
+import GitHubIcon from '@mui/icons-material/GitHub'
 
 export default function Footer() {
   return (
@@ -31,6 +32,10 @@ export default function Footer() {
             <a href="#" className="flex items-center gap-1 hover:text-brand-teal transition-colors">
               <MailIcon fontSize="small" />
               お問い合わせ
+            </a>
+            <a href="https://github.com/hollySizzle/atooshi_prot" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-teal transition-colors">
+              <GitHubIcon fontSize="small" />
+              GitHub
             </a>
           </div>
         </div>
