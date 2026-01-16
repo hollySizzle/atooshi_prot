@@ -153,8 +153,8 @@ export default function Dashboard() {
                       )}
                       <div className="flex-1">
                         <p className="font-medium text-brand-dark">{item.phase}</p>
-                        <p className="text-sm text-brand-gray">├─ {item.task}</p>
-                        <p className="text-sm text-brand-gray">│  担当: {item.assignee}</p>
+                        <p className="text-sm text-brand-gray"><span className="font-medium">タスク:</span> {item.task}</p>
+                        <p className="text-sm text-brand-gray"><span className="font-medium">担当:</span> {item.assignee}</p>
                       </div>
                       <span className={`badge ${
                         item.status === 'completed' ? 'badge--committer' :
