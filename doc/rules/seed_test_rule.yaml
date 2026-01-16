@@ -1,0 +1,72 @@
+rules:
+  must:
+    - マスタデータ（UserType, FeatureType, FeatureList）はSeed管理
+    - マスタデータ参照は find_by!(name: "...") 使用
+    - 権限なしテストは feature_lists_users.destroy_all で権限削除
+    - Seedファイル名はテーブル名と一致（例: user_types.seeds.rb）
+  must_not:
+    - マスタデータをFactoryBotで作成
+    - find_or_create_by(id: N) のIDハードコーディング
+    - grant_feature_access 使用（自動付与で代替）
+    - テストコードで日本語UserType名使用
+  should:
+    - 新規テストは sign_in user のみで開始（権限は自動付与済み）
+    - adminユーザーの権限テストは不要（permission_check!でバイパス）
+
+intent:
+  summary: 並列テスト実行時のID競合を構造的に解消し、テストコードの冗長性を排除する
+  background: |
+    従来の問題:
+    - find_or_create_by(id: N) でIDハードコーディング → 並列テストでID競合
+    - 毎回 grant_feature_access でボイラープレート → テスト可読性低下
+    - FactoryBotでマスタデータ作成 → sequence(:name)がID競合を誘発
+
+    解決策:
+    - before(:suite) でマスタデータをSeed投入
+    - FeatureListsUser.assign_default_features_for の after_create で権限自動付与
+    - マスタデータ = Seed、トランザクションデータ = FactoryBot の責務分離
+
+methods:
+  master_data_reference:
+    good: 'UserType.find_by!(name: "lab_company")'
+    bad: ['create(:user_type)', 'UserType.find_or_create_by(id: 1)']
+
+  user_with_permission:
+    code: 'let(:user) { create(:user, :lab_company) }'
+    note: sign_inのみでOK、grant_feature_access不要
+
+  user_without_permission:
+    code: |
+      let(:user_without_permission) do
+        user = create(:user, :lab_company)
+        user.feature_lists_users.destroy_all
+        user
+      end
+
+  user_with_specific_permission:
+    code: |
+      let(:user_with_specific_permission) do
+        user = create(:user, :lab_company)
+        user.feature_lists_users.destroy_all
+        feature = FeatureList.find_by!(view_path: "lab_companies/facilities", action: "index")
+        FeatureListsUser.create!(user: user, feature_list: feature)
+        user
+      end
+
+user_type_names:
+  lab_company: 検査機関
+  facility: 施設/医療機関
+  admin: 管理者
+  pickup_agent: 集荷業者
+
+auto_assignment_counts:
+  lab_company: 341件
+  facility: 53件
+  admin: 40件
+  pickup_agent: 20件
+
+related:
+  seed_loading: spec/rails_helper.rb
+  auto_assignment: app/models/feature_lists_user.rb
+  user_factory: spec/factories/users.rb
+  seed_files: [db/seeds/user_types.seeds.rb, db/seeds/feature_types.seeds.rb, db/seeds/feature_lists.seeds.rb]

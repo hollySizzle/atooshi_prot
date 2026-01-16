@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import FolderOpenIcon from '@mui/icons-material/FolderOpen'
 import PersonSearchIcon from '@mui/icons-material/PersonSearch'
-import InfoIcon from '@mui/icons-material/Info'
+import DashboardIcon from '@mui/icons-material/Dashboard'
 import AddIcon from '@mui/icons-material/Add'
 import LoginIcon from '@mui/icons-material/Login'
 
@@ -24,8 +24,8 @@ export default function Header() {
                 人材を探す
               </Link>
               <Link to="/dashboard" className="flex items-center gap-1 text-brand-gray hover:text-brand-teal transition-colors">
-                <InfoIcon fontSize="small" />
-                仕組み
+                <DashboardIcon fontSize="small" />
+                ダッシュボード
               </Link>
             </nav>
           </div>
