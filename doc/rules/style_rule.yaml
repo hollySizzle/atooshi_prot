@@ -1,0 +1,78 @@
+rules:
+  must:
+    - styles.scssに全スタイルを統合
+    - BEM形式でネスト構造を使用
+    - カラーはCSS変数(--brand-*)で定義
+    - スペーシングはCSS変数(--spacing-*)で定義
+  must_not:
+    - px直書き（CSS変数経由は可）
+    - marginプロパティ（gap/paddingで代替）
+    - 複数ファイルへのスタイル分散
+    - Tailwind以外の外部CSSライブラリ追加
+  should:
+    - 共通パターンはコンポーネントクラス化(.btn, .card等)
+    - @applyでTailwindユーティリティを活用
+    - メディアクエリはネスト内に記述
+
+intent:
+  summary: スタイルを1ファイルに統合し、CSS変数で一元管理する
+  background: |
+    問題:
+    - スタイルが分散すると影響範囲の把握が困難
+    - px直書きでレスポンシブ対応が困難
+    - marginは意図しないはみ出しを引き起こす
+
+    解決:
+    - styles.scss単一ファイルで管理
+    - CSS変数でデザイントークンを定義
+    - BEMネストで影響範囲を限定
+
+methods:
+  color_definition:
+    good: |
+      :root {
+        --brand-teal: #00CEC9;
+      }
+      .btn { background-color: var(--brand-teal); }
+    bad: '.btn { background-color: #00CEC9; }'
+
+  spacing:
+    good: 'padding: var(--spacing-base);'
+    bad: 'padding: 16px;'
+
+  layout:
+    good: 'gap: 1rem;'
+    bad: 'margin-left: 1rem;'
+
+  nesting:
+    good: |
+      .card {
+        &__title { ... }
+        &__content { ... }
+      }
+    bad: |
+      .card-title { ... }
+      .card-content { ... }
+
+css_variables:
+  colors:
+    --brand-teal: '#00CEC9 (アクセント)'
+    --brand-gray: '#636E72 (サブテキスト)'
+    --brand-dark: '#2D3436 (メインテキスト)'
+    --brand-green: '#10B981 (CTA)'
+  spacing:
+    --spacing-base: '1rem'
+    --spacing-lg: '2rem'
+    --spacing-xl: '3rem'
+
+available_components:
+  buttons: [.btn, .btn--primary, .btn--secondary, .btn--committer, .btn--investor]
+  cards: [.card, .card__image, .card__content]
+  badges: [.badge, .badge--innovator, .badge--committer, .badge--investor, .badge--phase]
+  forms: [.form__group, .form__label, .form__input, .form__select, .form__textarea]
+  layout: [.section, .page-header, .grid-layout, .stack, .flex-layout]
+  misc: [.progress-bar, .execution-dot]
+
+related:
+  styles: src/styles/styles.scss
+  tailwind_config: tailwind.config.js

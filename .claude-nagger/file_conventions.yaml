@@ -2,14 +2,22 @@
 # 特定のファイルパターンに対して適用される規約を定義します
 
 rules:
-  - name: "CSS/コンポーネント規約"
+  - name: "スタイルシート規約"
     patterns:
       - "**/*.scss"
       - "**/*.css"
+    severity: "block"
+    token_threshold: 35000
+    message: |
+      このファイルを変更する場合は、 @doc/rules/style_rule.yaml をよく確認し従うこと
+      作業を続けるためには、上記ドキュメントを確認したことを示してください
+
+  - name: "コンポーネント規約"
+    patterns:
       - "**/*.tsx"
       - "**/*.jsx"
     severity: "block"
     token_threshold: 35000
     message: |
-      このファイルを変更する場合は、 @doc/rules/component_style_rule.yaml をよく確認し従うこと
+      このファイルを変更する場合は、 @doc/rules/component_rule.yaml をよく確認し従うこと
       作業を続けるためには、上記ドキュメントを確認したことを示してください

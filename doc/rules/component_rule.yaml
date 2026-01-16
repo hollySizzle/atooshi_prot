@@ -1,0 +1,85 @@
+rules:
+  must:
+    - アイコンはGoogle Material Icons(@mui/icons-material)使用
+    - カラー指定はbrand-*クラスのみ(text-brand-dark, bg-brand-teal等)
+    - 再利用UIはstyles.scssのコンポーネントクラスを使用
+  must_not:
+    - Tailwindの直接カラー指定（bg-emerald-500, text-blue-600等）
+    - インラインstyle属性でのスタイル指定
+    - 独自アイコンSVGの追加
+    - CSS Modulesや styled-components の導入
+  should:
+    - レイアウト(flex, grid, gap)はTailwindユーティリティ
+    - ホバー/トランジションはTailwindユーティリティ
+    - 3回以上使うパターンはstyles.scssにコンポーネント化を検討
+
+intent:
+  summary: TailwindとSCSSの責務を分離し、コンポーネントの一貫性を保つ
+  background: |
+    問題:
+    - 直接カラー指定でブランドカラーが散逸
+    - アイコンが統一されずUIの一貫性が低下
+    - TailwindとSCSSの使い分けが曖昧
+
+    解決:
+    - カラーはbrand-*経由で強制
+    - Material Iconsで視覚的統一
+    - SCSS=再利用UI、Tailwind=レイアウト調整
+
+methods:
+  button:
+    good: '<button className="btn btn--primary">送信</button>'
+    bad: '<button className="px-4 py-2 bg-emerald-500 text-white rounded-lg">送信</button>'
+    note: styles.scssのコンポーネントを優先
+
+  color:
+    good: ['className="text-brand-dark"', 'className="bg-brand-teal"']
+    bad: ['className="text-gray-800"', 'className="bg-cyan-500"']
+    note: brand-*以外のカラー指定は禁止
+
+  icon:
+    good: |
+      import AddIcon from '@mui/icons-material/Add'
+      <AddIcon fontSize="small" />
+    bad: |
+      <svg viewBox="0 0 24 24">...</svg>
+    note: Material Iconsを使用、fontSize="small"|"medium"|"large"
+
+  layout:
+    good: '<div className="flex items-center gap-4">'
+    bad: '<div style={{ display: "flex", marginLeft: 16 }}>'
+    note: レイアウトはTailwind、インラインstyleは禁止
+
+  card:
+    good: |
+      <div className="card">
+        <img className="card__image" />
+        <div className="card__content">...</div>
+      </div>
+    bad: |
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+        ...
+      </div>
+    note: 定義済みコンポーネントを使用
+
+tailwind_allowed:
+  layout: [flex, grid, items-*, justify-*, gap-*]
+  spacing: [p-*, px-*, py-*, pt-*, pb-*, pl-*, pr-*]
+  sizing: [w-*, h-*, max-w-*, min-h-*]
+  responsive: [sm:*, md:*, lg:*, xl:*]
+  interaction: [hover:*, transition-*, duration-*]
+  display: [hidden, block, inline-flex]
+
+tailwind_prohibited:
+  colors: [bg-{color}-*, text-{color}-*, border-{color}-*]
+  exception: brand-*のみ許可
+
+material_icons:
+  import: '@mui/icons-material/{IconName}'
+  sizing: 'fontSize="small" | "medium" | "large" または sx={{ fontSize: N }}'
+  common: [Add, Edit, Delete, Search, Menu, Close, ArrowForward, Check, Info, Warning]
+
+related:
+  styles: src/styles/styles.scss
+  tailwind_config: tailwind.config.js
+  icons: https://mui.com/material-ui/material-icons/
