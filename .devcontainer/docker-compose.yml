@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/atooshi_prot:cached
+      # ClaudeCode認証データの永続化（プロジェクト名で動的に命名）
+      - claude_auth:/node/.claude
+    command: sleep infinity
+    expose:
+      - "5173"
+    user: node
+
+volumes:
+  # 動的なボリューム名（COMPOSE_PROJECT_NAME環境変数を使用）
+  # Docker Composeが自動的にプロジェクト名をプレフィックスとして付与
+  claude_auth:
