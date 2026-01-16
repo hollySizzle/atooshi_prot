@@ -17,6 +17,9 @@
   --brand-gray: #636E72;
   --brand-dark: #2D3436;
   --brand-green: #10B981;
+  --spacing-base: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
 }
 
 // ベーススタイル
@@ -28,7 +31,8 @@ body {
 
 // ユーザータイプバッジ
 .badge {
-  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  @apply inline-flex items-center rounded-full text-xs font-medium;
+  padding: 0.125rem 0.625rem;
 
   &--innovator {
     @apply bg-cyan-100 text-cyan-800;
@@ -64,7 +68,8 @@ body {
 
 // プログレスバー
 .progress-bar {
-  @apply h-2 bg-gray-200 rounded-full overflow-hidden;
+  @apply bg-gray-200 rounded-full overflow-hidden;
+  height: 0.5rem;
 
   &__fill {
     @apply h-full transition-all duration-300;
@@ -78,18 +83,20 @@ body {
   @apply hover:shadow-md transition-shadow duration-200;
 
   &__image {
-    @apply w-full h-48 object-cover;
+    @apply w-full object-cover;
+    height: 12rem;
   }
 
   &__content {
-    @apply p-4;
+    padding: var(--spacing-base);
   }
 }
 
 // ボタンスタイル
 .btn {
-  @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium;
+  @apply inline-flex items-center justify-center rounded-lg font-medium;
   @apply transition-colors duration-200;
+  padding: 0.5rem 1rem;
 
   &--primary {
     @apply text-white hover:opacity-90;
@@ -114,7 +121,9 @@ body {
 
 // 実行体制ドット
 .execution-dot {
-  @apply inline-block w-2 h-2 rounded-full;
+  @apply inline-block rounded-full;
+  width: 0.5rem;
+  height: 0.5rem;
 
   &--filled {
     background-color: var(--brand-green);
@@ -125,14 +134,147 @@ body {
   }
 }
 
-// フォーカスリング
-input:focus, select:focus, textarea:focus {
-  @apply ring-2 border-transparent;
-  --tw-ring-color: var(--brand-teal);
+// フォーム要素
+.form {
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__label {
+    @apply text-sm font-medium;
+    color: var(--brand-dark);
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    @apply w-full border border-gray-300 rounded-lg;
+    padding: 0.5rem 1rem;
+
+    &:focus {
+      @apply ring-2 border-transparent outline-none;
+      --tw-ring-color: var(--brand-teal);
+    }
+  }
 }
 
-// テスト文言
-.test-message {
-  color: red;
-  @apply text-2xl;
+// セクションレイアウト
+.section {
+  padding: var(--spacing-xl) 0;
+
+  &__container {
+    @apply max-w-7xl mx-auto;
+    padding: 0 var(--spacing-base);
+
+    @media (min-width: 640px) {
+      padding: 0 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 0 2rem;
+    }
+  }
+
+  &__title {
+    @apply text-2xl font-bold text-center;
+    color: var(--brand-dark);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+}
+
+// ページヘッダー
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__title {
+    @apply text-3xl font-bold;
+    color: var(--brand-dark);
+  }
+
+  &__description {
+    color: var(--brand-gray);
+  }
+}
+
+// グリッドレイアウト
+.grid-layout {
+  @apply grid gap-6;
+
+  &--cols-2 {
+    @media (min-width: 768px) {
+      @apply grid-cols-2;
+    }
+  }
+
+  &--cols-3 {
+    @media (min-width: 768px) {
+      @apply grid-cols-2;
+    }
+    @media (min-width: 1024px) {
+      @apply grid-cols-3;
+    }
+  }
+
+  &--cols-4 {
+    @apply grid-cols-2;
+    @media (min-width: 1024px) {
+      @apply grid-cols-4;
+    }
+  }
+}
+
+// フレックスレイアウト
+.flex-layout {
+  @apply flex;
+
+  &--gap-sm {
+    gap: 0.5rem;
+  }
+
+  &--gap-md {
+    gap: 1rem;
+  }
+
+  &--gap-lg {
+    gap: 1.5rem;
+  }
+
+  &--wrap {
+    @apply flex-wrap;
+  }
+}
+
+// スタックレイアウト（縦方向のスペーシング）
+.stack {
+  display: flex;
+  flex-direction: column;
+
+  &--gap-xs {
+    gap: 0.25rem;
+  }
+
+  &--gap-sm {
+    gap: 0.5rem;
+  }
+
+  &--gap-md {
+    gap: 1rem;
+  }
+
+  &--gap-lg {
+    gap: 1.5rem;
+  }
+
+  &--gap-xl {
+    gap: 2rem;
+  }
 }

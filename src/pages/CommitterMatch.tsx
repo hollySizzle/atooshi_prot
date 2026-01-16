@@ -1,4 +1,19 @@
 import { Link } from 'react-router-dom'
+import BuildIcon from '@mui/icons-material/Build'
+import CodeIcon from '@mui/icons-material/Code'
+import PaletteIcon from '@mui/icons-material/Palette'
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing'
+import LocalShippingIcon from '@mui/icons-material/LocalShipping'
+import TrendingUpIcon from '@mui/icons-material/TrendingUp'
+import HeadsetMicIcon from '@mui/icons-material/HeadsetMic'
+import WorkIcon from '@mui/icons-material/Work'
+import PaidIcon from '@mui/icons-material/Paid'
+import ScheduleIcon from '@mui/icons-material/Schedule'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
+import AssignmentIcon from '@mui/icons-material/Assignment'
+import GroupsIcon from '@mui/icons-material/Groups'
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
 
 const opportunities = [
   {
@@ -27,87 +42,125 @@ const opportunities = [
   },
 ]
 
+const skillIcons: Record<string, React.ElementType> = {
+  'すべて': BuildIcon,
+  'エンジニア': CodeIcon,
+  'デザイン': PaletteIcon,
+  '製造': PrecisionManufacturingIcon,
+  '物流': LocalShippingIcon,
+  'マーケ': TrendingUpIcon,
+  'CS': HeadsetMicIcon,
+}
+
 export default function CommitterMatch() {
   return (
     <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-brand-dark mb-2">スキルを活かして参画</h1>
-          <p className="text-brand-gray">あなたのスキルを求めているプロジェクトを見つけましょう</p>
-        </div>
-
-        {/* Skills Filter */}
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2">
-            {['すべて', 'エンジニア', 'デザイン', '製造', '物流', 'マーケ', 'CS'].map((skill) => (
-              <button
-                key={skill}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  skill === 'すべて'
-                    ? 'bg-brand-green text-white'
-                    : 'bg-gray-100 text-brand-gray hover:bg-gray-200'
-                }`}
-              >
-                {skill}
-              </button>
-            ))}
+        <div className="flex flex-col gap-8">
+          <div className="page-header">
+            <h1 className="page-header__title flex items-center gap-2">
+              <BuildIcon />
+              スキルを活かして参画
+            </h1>
+            <p className="page-header__description">あなたのスキルを求めているプロジェクトを見つけましょう</p>
           </div>
-        </div>
 
-        {/* Opportunities */}
-        <div className="space-y-4">
+          {/* Skills Filter */}
+          <div className="flex flex-wrap gap-2">
+            {['すべて', 'エンジニア', 'デザイン', '製造', '物流', 'マーケ', 'CS'].map((skill) => {
+              const SkillIcon = skillIcons[skill]
+              return (
+                <button
+                  key={skill}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 ${
+                    skill === 'すべて'
+                      ? 'bg-brand-green text-white'
+                      : 'bg-gray-100 text-brand-gray hover:bg-gray-200'
+                  }`}
+                >
+                  <SkillIcon fontSize="small" />
+                  {skill}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Opportunities */}
+          <div className="flex flex-col gap-4">
           {opportunities.map((opp) => (
             <div key={opp.id} className="card p-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div className="flex-1">
-                  <p className="text-sm text-brand-gray mb-1">{opp.project}</p>
-                  <h3 className="text-xl font-bold text-brand-dark mb-2">{opp.role}</h3>
-                  <div className="flex flex-wrap gap-2 mb-3">
+                <div className="flex-1 flex flex-col gap-2">
+                  <p className="text-sm text-brand-gray">{opp.project}</p>
+                  <h3 className="text-xl font-bold text-brand-dark flex items-center gap-2">
+                    <WorkIcon className="text-brand-green" />
+                    {opp.role}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
                     {opp.skills.map((skill) => (
                       <span key={skill} className="badge badge--committer">
                         {skill}
                       </span>
                     ))}
                   </div>
-                  <p className="text-sm text-brand-gray">応募期限: {opp.deadline}</p>
+                  <p className="text-sm text-brand-gray flex items-center gap-1">
+                    <ScheduleIcon fontSize="small" />
+                    応募期限: {opp.deadline}
+                  </p>
                 </div>
-                <div className="text-right">
-                  <p className="text-sm text-brand-gray">報酬（Bounty）</p>
+                <div className="flex flex-col gap-2 text-right">
+                  <p className="text-sm text-brand-gray flex items-center justify-end gap-1">
+                    <PaidIcon fontSize="small" />
+                    報酬（Bounty）
+                  </p>
                   <p className="text-2xl font-bold text-brand-green">
                     ¥{opp.bounty.toLocaleString()}
                   </p>
                   <Link
                     to={`/projects/pj-001`}
-                    className="btn btn--committer mt-4 inline-block"
+                    className="btn btn--committer inline-flex items-center gap-1"
                   >
                     詳細を見る
+                    <ArrowForwardIcon fontSize="small" />
                   </Link>
                 </div>
               </div>
             </div>
           ))}
-        </div>
+          </div>
 
-        {/* Boarding Track Info */}
-        <div className="mt-12 card p-8 bg-emerald-50 border-emerald-200">
-          <h2 className="text-xl font-bold text-brand-dark mb-4">Boarding Track とは？</h2>
-          <p className="text-brand-gray mb-4">
-            単発タスクから始めて、継続的なプロジェクトメンバーへ昇格できる仕組みです。
-          </p>
-          <div className="flex items-center gap-4">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-emerald-200 rounded-full flex items-center justify-center mb-2 text-brand-dark font-bold">1</div>
-              <p className="text-sm text-brand-gray">単発タスク</p>
-            </div>
-            <div className="text-brand-green font-bold">→</div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-emerald-300 rounded-full flex items-center justify-center mb-2 text-brand-dark font-bold">2</div>
-              <p className="text-sm text-brand-gray">継続参画</p>
-            </div>
-            <div className="text-brand-green font-bold">→</div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-brand-green text-white rounded-full flex items-center justify-center mb-2 font-bold">3</div>
-              <p className="text-sm text-brand-gray">ボーディング</p>
+          {/* Boarding Track Info */}
+          <div className="card p-8 bg-emerald-50 border-emerald-200">
+            <div className="flex flex-col gap-4">
+              <h2 className="text-xl font-bold text-brand-dark flex items-center gap-2">
+                <RocketLaunchIcon className="text-brand-green" />
+                Boarding Track とは？
+              </h2>
+              <p className="text-brand-gray">
+                単発タスクから始めて、継続的なプロジェクトメンバーへ昇格できる仕組みです。
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 bg-emerald-200 rounded-full flex items-center justify-center text-brand-dark">
+                    <AssignmentIcon />
+                  </div>
+                  <p className="text-sm text-brand-gray">単発タスク</p>
+                </div>
+                <ArrowForwardIcon className="text-brand-green" />
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 bg-emerald-300 rounded-full flex items-center justify-center text-brand-dark">
+                    <GroupsIcon />
+                  </div>
+                  <p className="text-sm text-brand-gray">継続参画</p>
+                </div>
+                <ArrowForwardIcon className="text-brand-green" />
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 bg-brand-green text-white rounded-full flex items-center justify-center">
+                    <EmojiEventsIcon />
+                  </div>
+                  <p className="text-sm text-brand-gray">ボーディング</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

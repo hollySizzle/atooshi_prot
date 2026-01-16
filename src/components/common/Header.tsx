@@ -1,4 +1,9 @@
 import { Link } from 'react-router-dom'
+import FolderOpenIcon from '@mui/icons-material/FolderOpen'
+import PersonSearchIcon from '@mui/icons-material/PersonSearch'
+import InfoIcon from '@mui/icons-material/Info'
+import AddIcon from '@mui/icons-material/Add'
+import LoginIcon from '@mui/icons-material/Login'
 
 export default function Header() {
   return (
@@ -10,22 +15,27 @@ export default function Header() {
               <img src="/logo.svg" alt="Atooshi" className="h-8" />
             </Link>
             <nav className="hidden md:flex space-x-6">
-              <Link to="/projects" className="text-brand-gray hover:text-brand-teal transition-colors">
+              <Link to="/projects" className="flex items-center gap-1 text-brand-gray hover:text-brand-teal transition-colors">
+                <FolderOpenIcon fontSize="small" />
                 プロジェクト
               </Link>
-              <Link to="/match" className="text-brand-gray hover:text-brand-teal transition-colors">
+              <Link to="/match" className="flex items-center gap-1 text-brand-gray hover:text-brand-teal transition-colors">
+                <PersonSearchIcon fontSize="small" />
                 人材を探す
               </Link>
-              <Link to="/dashboard" className="text-brand-gray hover:text-brand-teal transition-colors">
+              <Link to="/dashboard" className="flex items-center gap-1 text-brand-gray hover:text-brand-teal transition-colors">
+                <InfoIcon fontSize="small" />
                 仕組み
               </Link>
             </nav>
           </div>
           <div className="flex items-center space-x-4">
-            <Link to="/projects/new" className="hidden sm:inline-flex items-center px-4 py-2 bg-brand-green text-white rounded-lg hover:opacity-90 transition-opacity text-sm font-medium">
+            <Link to="/projects/new" className="hidden sm:inline-flex items-center gap-1 px-4 py-2 bg-brand-green text-white rounded-lg hover:opacity-90 transition-opacity text-sm font-medium">
+              <AddIcon fontSize="small" />
               プロジェクトを始める
             </Link>
-            <button className="text-brand-gray hover:text-brand-dark transition-colors">
+            <button className="flex items-center gap-1 text-brand-gray hover:text-brand-dark transition-colors">
+              <LoginIcon fontSize="small" />
               ログイン
             </button>
           </div>

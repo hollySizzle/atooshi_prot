@@ -1,4 +1,8 @@
 import { Link } from 'react-router-dom'
+import BusinessIcon from '@mui/icons-material/Business'
+import DescriptionIcon from '@mui/icons-material/Description'
+import ShieldIcon from '@mui/icons-material/Shield'
+import MailIcon from '@mui/icons-material/Mail'
 
 export default function Footer() {
   return (
@@ -12,10 +16,22 @@ export default function Footer() {
             <p className="text-gray-400 text-sm">実行力でつなぐクラウドファンディング</p>
           </div>
           <div className="flex space-x-6 text-sm text-gray-400">
-            <a href="#" className="hover:text-brand-teal transition-colors">会社情報</a>
-            <a href="#" className="hover:text-brand-teal transition-colors">利用規約</a>
-            <a href="#" className="hover:text-brand-teal transition-colors">プライバシー</a>
-            <a href="#" className="hover:text-brand-teal transition-colors">お問い合わせ</a>
+            <a href="#" className="flex items-center gap-1 hover:text-brand-teal transition-colors">
+              <BusinessIcon fontSize="small" />
+              会社情報
+            </a>
+            <a href="#" className="flex items-center gap-1 hover:text-brand-teal transition-colors">
+              <DescriptionIcon fontSize="small" />
+              利用規約
+            </a>
+            <a href="#" className="flex items-center gap-1 hover:text-brand-teal transition-colors">
+              <ShieldIcon fontSize="small" />
+              プライバシー
+            </a>
+            <a href="#" className="flex items-center gap-1 hover:text-brand-teal transition-colors">
+              <MailIcon fontSize="small" />
+              お問い合わせ
+            </a>
           </div>
         </div>
       </div>
