@@ -130,3 +130,9 @@ input:focus, select:focus, textarea:focus {
   @apply ring-2 border-transparent;
   --tw-ring-color: var(--brand-teal);
 }
+
+// テスト文言
+.test-message {
+  color: red;
+  @apply text-2xl;
+}
