@@ -19,7 +19,9 @@
       "mcp__serena__replace_symbol_body",
       "Bash(npm run lint)",
       "Bash(sudo apt-get update:*)",
-      "Bash(sudo apt-get:*)"
+      "Bash(sudo apt-get:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
