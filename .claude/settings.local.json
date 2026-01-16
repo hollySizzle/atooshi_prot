@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(docker compose:*)"
+      "Bash(docker compose:*)",
+      "mcp__serena__activate_project",
+      "mcp__serena__list_memories",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__list_dir",
+      "mcp__serena__read_file"
     ]
   },
   "enableAllProjectMcpServers": true,
