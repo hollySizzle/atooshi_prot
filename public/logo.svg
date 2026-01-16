@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70">
+  <!-- 案2: 幾何学的Aアイコン + テキスト（モノクロ + アクセント） -->
+
+  <!-- アイコン: Aを山/目標に見立てた幾何学形状 -->
+  <g transform="translate(10, 8)">
+    <!-- 山形のA -->
+    <polygon points="30,12 10,58 18,58 30,30 42,58 50,58"
+             fill="#1A1A2E"/>
+    <!-- 後押しの矢印（アクセント） -->
+    <path d="M30 68 L30 52 L24 58 M30 52 L36 58"
+          stroke="#00CEC9"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+  </g>
+
+  <!-- テキスト: Atooshi -->
+  <text x="75" y="52"
+        font-family="'Helvetica Neue', Arial, sans-serif"
+        font-size="32"
+        font-weight="600"
+        fill="#1A1A2E"
+        letter-spacing="0.5">Atooshi</text>
+</svg>
