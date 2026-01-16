@@ -1,5 +1,9 @@
 {
-  "name": "Atooshi-devcontainers",
+  "name": "${localWorkspaceFolder}",
+  "remoteEnv": {
+    "WORKSPACE_BASENAME": "${localWorkspaceFolder}",
+    "COMPOSE_PROJECT_NAME": "${localWorkspaceFolder}"
+  },
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspaces/atooshi_prot",

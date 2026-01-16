@@ -4,11 +4,25 @@
 
 // ===========================================
 // Atooshi カスタムスタイル
+// Brand Colors:
+// - teal:  #00CEC9 (アクセント)
+// - gray:  #636E72 (サブテキスト)
+// - dark:  #2D3436 (メインテキスト)
+// - green: #10B981 (CTA/コミッター)
 // ===========================================
+
+// CSS変数でブランドカラーを定義
+:root {
+  --brand-teal: #00CEC9;
+  --brand-gray: #636E72;
+  --brand-dark: #2D3436;
+  --brand-green: #10B981;
+}
 
 // ベーススタイル
 body {
-  @apply bg-gray-50 text-gray-900;
+  @apply bg-gray-50;
+  color: var(--brand-dark);
   font-feature-settings: "palt";
 }
 
@@ -17,7 +31,7 @@ body {
   @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
 
   &--innovator {
-    @apply bg-blue-100 text-blue-800;
+    @apply bg-cyan-100 text-cyan-800;
   }
 
   &--committer {
@@ -25,22 +39,25 @@ body {
   }
 
   &--investor {
-    @apply bg-purple-100 text-purple-800;
+    @apply bg-gray-100;
+    color: var(--brand-gray);
   }
 
   &--phase {
-    @apply bg-gray-100 text-gray-800;
+    @apply bg-gray-100;
+    color: var(--brand-gray);
 
     &.light {
-      @apply bg-yellow-100 text-yellow-800;
+      @apply bg-cyan-100 text-cyan-800;
     }
 
     &.middle {
-      @apply bg-green-100 text-green-800;
+      @apply bg-emerald-100 text-emerald-800;
     }
 
     &.pre-light {
-      @apply bg-gray-100 text-gray-600;
+      @apply bg-gray-100;
+      color: var(--brand-gray);
     }
   }
 }
@@ -50,7 +67,8 @@ body {
   @apply h-2 bg-gray-200 rounded-full overflow-hidden;
 
   &__fill {
-    @apply h-full bg-emerald-500 transition-all duration-300;
+    @apply h-full transition-all duration-300;
+    background-color: var(--brand-green);
   }
 }
 
@@ -74,19 +92,23 @@ body {
   @apply transition-colors duration-200;
 
   &--primary {
-    @apply bg-blue-500 text-white hover:bg-blue-600;
+    @apply text-white hover:opacity-90;
+    background-color: var(--brand-teal);
   }
 
   &--secondary {
-    @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+    @apply bg-gray-100 hover:bg-gray-200;
+    color: var(--brand-gray);
   }
 
   &--committer {
-    @apply bg-emerald-500 text-white hover:bg-emerald-600;
+    @apply text-white hover:opacity-90;
+    background-color: var(--brand-green);
   }
 
   &--investor {
-    @apply bg-purple-500 text-white hover:bg-purple-600;
+    @apply text-white hover:opacity-90;
+    background-color: var(--brand-dark);
   }
 }
 
@@ -95,10 +117,16 @@ body {
   @apply inline-block w-2 h-2 rounded-full;
 
   &--filled {
-    @apply bg-emerald-500;
+    background-color: var(--brand-green);
   }
 
   &--recruiting {
     @apply bg-gray-300 border border-gray-400;
   }
+}
+
+// フォーカスリング
+input:focus, select:focus, textarea:focus {
+  @apply ring-2 border-transparent;
+  --tw-ring-color: var(--brand-teal);
 }
