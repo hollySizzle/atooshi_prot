@@ -12,7 +12,14 @@
       "mcp__serena__replace_content",
       "Bash(npm run build:*)",
       "mcp__serena__find_file",
-      "mcp__serena__create_text_file"
+      "mcp__serena__create_text_file",
+      "mcp__serena__onboarding",
+      "mcp__serena__write_memory",
+      "mcp__serena__read_memory",
+      "mcp__serena__replace_symbol_body",
+      "Bash(npm run lint)",
+      "Bash(sudo apt-get update:*)",
+      "Bash(sudo apt-get:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

@@ -278,3 +278,57 @@ body {
     gap: 2rem;
   }
 }
+
+// モーダルコンポーネント
+.modal {
+  &__overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &__container {
+    @apply bg-white rounded-lg shadow-xl w-full max-h-[90vh] overflow-y-auto;
+    max-width: 32rem;
+    margin: var(--spacing-base);
+  }
+
+  &__header {
+    @apply flex items-center justify-between border-b border-gray-200;
+    padding: var(--spacing-base);
+
+    &-title {
+      @apply text-xl font-bold;
+      color: var(--brand-dark);
+    }
+  }
+
+  &__body {
+    padding: var(--spacing-base);
+  }
+
+  &__footer {
+    @apply flex justify-end gap-3 border-t border-gray-200;
+    padding: var(--spacing-base);
+  }
+
+  &__close {
+    @apply p-1 rounded-full hover:bg-gray-100 transition-colors;
+    color: var(--brand-gray);
+  }
+}
+
+// 応募情報サマリー
+.application-summary {
+  @apply bg-gray-50 rounded-lg;
+  padding: var(--spacing-base);
+
+  &__item {
+    @apply flex items-center gap-2 text-sm;
+    color: var(--brand-gray);
+
+    &-value {
+      @apply font-medium;
+      color: var(--brand-dark);
+    }
+  }
+}

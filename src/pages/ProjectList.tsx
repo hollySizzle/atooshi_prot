@@ -3,7 +3,6 @@ import { projects } from '../data/mockData'
 import SearchIcon from '@mui/icons-material/Search'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import GroupIcon from '@mui/icons-material/Group'
-import ImageIcon from '@mui/icons-material/Image'
 
 export default function ProjectList() {
   return (
@@ -39,8 +38,12 @@ export default function ProjectList() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project) => (
               <Link key={project.id} to={`/projects/${project.id}`} className="card">
-                <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <ImageIcon className="text-brand-gray" sx={{ fontSize: 48 }} />
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={project.coverImage}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-4">
                   <div className="flex flex-col gap-4">

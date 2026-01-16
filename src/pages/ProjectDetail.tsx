@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { projects } from '../data/mockData'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import ImageIcon from '@mui/icons-material/Image'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import BuildIcon from '@mui/icons-material/Build'
 import PeopleIcon from '@mui/icons-material/People'
@@ -31,8 +30,12 @@ export default function ProjectDetail() {
             {/* Main Content */}
             <div className="lg:col-span-2">
               <div className="flex flex-col gap-6">
-                <div className="h-64 md:h-96 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg flex items-center justify-center">
-                  <ImageIcon className="text-brand-gray" sx={{ fontSize: 64 }} />
+                <div className="h-64 md:h-96 rounded-lg overflow-hidden">
+                  <img
+                    src={project.coverImage}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <div className="flex gap-2">
@@ -121,10 +124,10 @@ export default function ProjectDetail() {
                   <hr />
 
                   <div className="flex flex-col gap-2">
-                    <button className="btn btn--committer w-full flex items-center justify-center gap-2">
+                    <Link to="/match" className="btn btn--committer w-full flex items-center justify-center gap-2">
                       <BuildIcon fontSize="small" />
                       スキルで参画する
-                    </button>
+                    </Link>
                     <p className="text-sm text-brand-gray text-center">
                       コミッターとして参画
                     </p>
