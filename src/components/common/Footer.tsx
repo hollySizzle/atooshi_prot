@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <Link to="/" className="flex items-center mb-2">
-              <img src="/logo.svg" alt="Atooshi" className="h-6 brightness-0 invert" />
+              <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="Atooshi" className="h-6 brightness-0 invert" />
             </Link>
             <p className="text-gray-400 text-sm">実行力でつなぐクラウドファンディング</p>
           </div>
