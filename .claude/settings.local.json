@@ -27,7 +27,11 @@
       "mcp__serena__think_about_collected_information",
       "mcp__serena__think_about_whether_you_are_done",
       "mcp__serena__get_current_config",
-      "mcp__serena__find_symbol"
+      "mcp__serena__find_symbol",
+      "Bash(npm install:*)",
+      "Bash(npm run test:run:*)",
+      "Bash(timeout 10 npm run dev:*)",
+      "Bash(npx vitest:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
