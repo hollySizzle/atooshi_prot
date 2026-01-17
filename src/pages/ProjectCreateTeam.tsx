@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import GroupsIcon from '@mui/icons-material/Groups'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
@@ -5,8 +6,27 @@ import BadgeIcon from '@mui/icons-material/Badge'
 import WorkIcon from '@mui/icons-material/Work'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import CloseIcon from '@mui/icons-material/Close'
 
 export default function ProjectCreateTeam() {
+  const [roles, setRoles] = useState([{ id: 1, name: '', count: '' }])
+
+  const addRole = () => {
+    setRoles([...roles, { id: Date.now(), name: '', count: '' }])
+  }
+
+  const removeRole = (id: number) => {
+    if (roles.length > 1) {
+      setRoles(roles.filter(role => role.id !== id))
+    }
+  }
+
+  const updateRole = (id: number, field: 'name' | 'count', value: string) => {
+    setRoles(roles.map(role => 
+      role.id === id ? { ...role, [field]: value } : role
+    ))
+  }
+
   return (
     <div className="py-8">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,20 +89,39 @@ export default function ProjectCreateTeam() {
                   募集するコミッター
                 </label>
                 <div className="flex flex-col gap-3">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-teal focus:border-transparent"
-                      placeholder="役割（例：デザイナー）"
-                    />
-                    <input
-                      type="number"
-                      className="w-24 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-teal focus:border-transparent"
-                      placeholder="人数"
-                      min="1"
-                    />
-                  </div>
-                  <button type="button" className="text-brand-teal text-sm font-medium flex items-center gap-1 hover:underline">
+                  {roles.map((role) => (
+                    <div key={role.id} className="flex gap-2 items-center">
+                      <input
+                        type="text"
+                        value={role.name}
+                        onChange={(e) => updateRole(role.id, 'name', e.target.value)}
+                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-teal focus:border-transparent"
+                        placeholder="役割（例：デザイナー）"
+                      />
+                      <input
+                        type="number"
+                        value={role.count}
+                        onChange={(e) => updateRole(role.id, 'count', e.target.value)}
+                        className="w-24 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-teal focus:border-transparent"
+                        placeholder="人数"
+                        min="1"
+                      />
+                      {roles.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeRole(role.id)}
+                          className="p-2 text-brand-gray hover:text-brand-dark transition-colors"
+                        >
+                          <CloseIcon fontSize="small" />
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={addRole}
+                    className="text-brand-teal text-sm font-medium flex items-center gap-1 hover:underline"
+                  >
                     <PersonAddIcon fontSize="small" />
                     役割を追加
                   </button>
