@@ -408,6 +408,116 @@ export const users: User[] = [
     bio: 'SaaS企業でCS部門を立ち上げた経験を持つ。生産者と消費者の橋渡し役として活躍中。',
     skills: ['カスタマーサポート', '業務設計', 'コミュニケーション'],
   },
+  // pj-003 用（スマート農業IoT）
+  {
+    id: 'user-010',
+    name: '井上智也',
+    role: 'innovator',
+    title: '組込みエンジニア',
+    bio: '大手電機メーカーでIoT製品開発に従事した後、農業IoTスタートアップを創業。実家は兼業農家。',
+    skills: ['組込み開発', 'ハードウェア設計', '農業知識'],
+  },
+  {
+    id: 'user-011',
+    name: '松本大輔',
+    role: 'committer',
+    title: 'ファームウェアエンジニア',
+    bio: '省電力デバイスのファームウェア開発が専門。IoTセンサー製品の開発実績多数。',
+    skills: ['C/C++', 'RTOS', 'BLE/LoRa'],
+  },
+  // pj-004 用（オンライン学習）
+  {
+    id: 'user-012',
+    name: '森田恵子',
+    role: 'innovator',
+    title: '教育事業家',
+    bio: '教育系スタートアップを2社創業。「学びの機会を全ての人に」をミッションに活動中。',
+    skills: ['教育設計', '事業開発', 'コミュニティ運営'],
+  },
+  {
+    id: 'user-013',
+    name: '岡田隆',
+    role: 'committer',
+    title: 'バックエンドエンジニア',
+    bio: '動画配信プラットフォームの開発経験を持つ。スケーラブルなシステム設計が得意。',
+    skills: ['Go', 'Kubernetes', '動画配信'],
+  },
+  {
+    id: 'user-014',
+    name: '藤井真理',
+    role: 'committer',
+    title: 'UIデザイナー',
+    bio: '教育アプリのUI/UX設計を多数担当。ユーザーの学習継続を促すデザインを追求。',
+    skills: ['UI設計', 'Figma', 'ユーザーリサーチ'],
+  },
+  // pj-005 用（サステナブルファッション）
+  {
+    id: 'user-015',
+    name: '加藤美穂',
+    role: 'innovator',
+    title: 'ファッションデザイナー',
+    bio: '海外ラグジュアリーブランドで10年経験後、サステナブルファッションの道へ。環境配慮素材の知識が豊富。',
+    skills: ['ファッションデザイン', 'サステナビリティ', 'ブランド構築'],
+  },
+  // pj-006 用（ペット見守りAI）
+  {
+    id: 'user-016',
+    name: '吉田康弘',
+    role: 'innovator',
+    title: 'AIエンジニア',
+    bio: '画像認識AIの研究開発に10年従事。愛犬家で、ペットの健康管理に情熱を持つ。',
+    skills: ['機械学習', 'コンピュータビジョン', 'Python'],
+  },
+  {
+    id: 'user-017',
+    name: '石川純',
+    role: 'committer',
+    title: 'ハードウェアエンジニア',
+    bio: 'カメラモジュールの設計開発が専門。民生品からセキュリティカメラまで幅広い経験。',
+    skills: ['カメラ設計', '電子回路', '量産設計'],
+  },
+  {
+    id: 'user-018',
+    name: '前田愛',
+    role: 'committer',
+    title: 'モバイルエンジニア',
+    bio: 'iOS/Androidアプリ開発歴8年。ペット関連アプリの開発実績あり。',
+    skills: ['Swift', 'Kotlin', 'Flutter'],
+  },
+  {
+    id: 'user-019',
+    name: '山口健二',
+    role: 'committer',
+    title: '製造コンサルタント',
+    bio: '家電メーカーで量産立ち上げを20年担当。中国工場との連携に精通。',
+    skills: ['製造管理', '品質管理', '海外工場管理'],
+  },
+  {
+    id: 'user-020',
+    name: '清水さやか',
+    role: 'committer',
+    title: 'カスタマーサポート',
+    bio: 'ペット用品ECでCS責任者を経験。ペットオーナーの気持ちに寄り添う対応が得意。',
+    skills: ['CS運営', 'FAQ設計', 'ユーザー対応'],
+  },
+  // pj-007 用（コミュニティカフェ）
+  {
+    id: 'user-021',
+    name: '川村洋子',
+    role: 'innovator',
+    title: 'コミュニティデザイナー',
+    bio: '地域活性化NPOで10年活動後、コミュニティカフェ開業を決意。地域の繋がりづくりがライフワーク。',
+    skills: ['コミュニティ運営', 'イベント企画', '地域連携'],
+  },
+  // pj-008 用（フードロス削減アプリ）
+  {
+    id: 'user-022',
+    name: '長谷川健',
+    role: 'innovator',
+    title: '社会起業家',
+    bio: 'フードバンク運営を5年経験。テクノロジーでフードロス問題を解決したいと起業。',
+    skills: ['NPO運営', '食品流通', '社会課題解決'],
+  },
 ]
 
 // チームメンバー（プロジェクトごと）
@@ -431,6 +541,25 @@ export const teamMembers: TeamMember[] = [
   { userId: 'user-007', projectId: 'pj-002', role: 'committer', position: 'デザイナー', joinedAt: '2024-07-15', track: 'Core' },
   { userId: 'user-008', projectId: 'pj-002', role: 'committer', position: 'マーケティング', joinedAt: '2024-08-01', track: 'Core' },
   { userId: 'user-009', projectId: 'pj-002', role: 'committer', position: 'カスタマーサクセス', joinedAt: '2024-09-01', track: 'Candidate' },
+  // pj-003（スマート農業IoT - pre_light）
+  { userId: 'user-010', projectId: 'pj-003', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-11-01' },
+  { userId: 'user-011', projectId: 'pj-003', role: 'committer', position: 'ファームウェア開発', joinedAt: '2024-12-01', track: 'Entry' },
+  // pj-004（オンライン学習 - light）
+  { userId: 'user-012', projectId: 'pj-004', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-09-01' },
+  { userId: 'user-013', projectId: 'pj-004', role: 'committer', position: 'バックエンド開発', joinedAt: '2024-10-01', track: 'Core' },
+  { userId: 'user-014', projectId: 'pj-004', role: 'committer', position: 'UIデザイン', joinedAt: '2024-10-15', track: 'Candidate' },
+  // pj-005（サステナブルファッション - pre_light）
+  { userId: 'user-015', projectId: 'pj-005', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-12-01' },
+  // pj-006（ペット見守りAI - middle）
+  { userId: 'user-016', projectId: 'pj-006', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-03-01' },
+  { userId: 'user-017', projectId: 'pj-006', role: 'committer', position: 'ハードウェア設計', joinedAt: '2024-04-01', track: 'Boarding' },
+  { userId: 'user-018', projectId: 'pj-006', role: 'committer', position: 'モバイルアプリ開発', joinedAt: '2024-05-01', track: 'Core' },
+  { userId: 'user-019', projectId: 'pj-006', role: 'committer', position: '製造管理', joinedAt: '2024-06-01', track: 'Core' },
+  { userId: 'user-020', projectId: 'pj-006', role: 'committer', position: 'カスタマーサポート', joinedAt: '2024-08-01', track: 'Candidate' },
+  // pj-007（コミュニティカフェ - light）
+  { userId: 'user-021', projectId: 'pj-007', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-10-01' },
+  // pj-008（フードロス削減アプリ - pre_light）
+  { userId: 'user-022', projectId: 'pj-008', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-12-15' },
 ]
 
 // 活動報告
@@ -517,6 +646,148 @@ export const activityReports: ActivityReport[] = [
     content: '正式リリースから2ヶ月で月間流通額500万円を突破しました。リピーターも増えており、安定した成長を見せています。',
     createdAt: '2025-01-05',
     author: '小林由香',
+  },
+  // pj-003（スマート農業IoT - pre_light）
+  {
+    id: 'report-010',
+    projectId: 'pj-003',
+    title: 'プロトタイプ完成のお知らせ',
+    content: '土壌水分・温度・湿度・照度を測定できるプロトタイプが完成しました。実家の畑でテスト中です。',
+    createdAt: '2024-11-15',
+    author: '井上智也',
+  },
+  {
+    id: 'report-011',
+    projectId: 'pj-003',
+    title: 'ファームウェアエンジニア参画',
+    content: '省電力設計のスペシャリストである松本さんがコミッターとして参画してくれました。電池寿命1年を目指します。',
+    createdAt: '2024-12-01',
+    author: '井上智也',
+  },
+  // pj-004（オンライン学習 - light）
+  {
+    id: 'report-012',
+    projectId: 'pj-004',
+    title: 'クラウドファンディング開始',
+    content: '「誰でもどこでも学べる」をコンセプトに、オンライン学習プラットフォームのCFを開始しました。',
+    createdAt: '2024-12-01',
+    author: '森田恵子',
+  },
+  {
+    id: 'report-013',
+    projectId: 'pj-004',
+    title: '開発チーム体制が整いました',
+    content: 'バックエンドの岡田さん、UIデザインの藤井さんが参画。プラットフォーム開発を本格始動します。',
+    createdAt: '2024-12-15',
+    author: '森田恵子',
+  },
+  {
+    id: 'report-014',
+    projectId: 'pj-004',
+    title: '60%達成！講師陣も決定',
+    content: '目標金額の60%を達成しました。現役プロによる5コースの講師陣も確定し、カリキュラム作成中です。',
+    createdAt: '2025-01-10',
+    author: '森田恵子',
+  },
+  // pj-005（サステナブルファッション - pre_light）
+  {
+    id: 'report-015',
+    projectId: 'pj-005',
+    title: 'ブランド「Re:WEAR」始動',
+    content: 'サステナブルファッションブランド「Re:WEAR」を立ち上げました。環境配慮とおしゃれを両立します。',
+    createdAt: '2024-12-01',
+    author: '加藤美穂',
+  },
+  {
+    id: 'report-016',
+    projectId: 'pj-005',
+    title: '素材調達先との提携',
+    content: 'ペットボトル再生繊維メーカー、オーガニックコットン農家との提携が決まりました。',
+    createdAt: '2025-01-05',
+    author: '加藤美穂',
+  },
+  // pj-006（ペット見守りAI - middle）
+  {
+    id: 'report-017',
+    projectId: 'pj-006',
+    title: 'CF目標達成のお礼',
+    content: '目標180万円を大きく超える220万円のご支援をいただきました。156名の支援者の皆様、ありがとうございます！',
+    createdAt: '2024-07-01',
+    author: '吉田康弘',
+  },
+  {
+    id: 'report-018',
+    projectId: 'pj-006',
+    title: 'ベータテスト完了',
+    content: '100世帯でのベータテストが完了。AIの異常検知精度は95%を達成しました。',
+    createdAt: '2024-09-15',
+    author: '吉田康弘',
+  },
+  {
+    id: 'report-019',
+    projectId: 'pj-006',
+    title: '量産開始',
+    content: '金型製作が完了し、中国工場での量産を開始しました。来月から順次発送予定です。',
+    createdAt: '2024-11-01',
+    author: '山口健二',
+  },
+  {
+    id: 'report-020',
+    projectId: 'pj-006',
+    title: 'リターン発送開始',
+    content: '早割支援者様への発送を開始しました。初期ロットは品質チェックも万全です。',
+    createdAt: '2024-12-15',
+    author: '清水さやか',
+  },
+  {
+    id: 'report-021',
+    projectId: 'pj-006',
+    title: 'ユーザーレビュー続々',
+    content: '「留守中の愛犬の様子がわかって安心」「異常検知で早めに病院に行けた」など、嬉しい声をいただいています。',
+    createdAt: '2025-01-10',
+    author: '清水さやか',
+  },
+  // pj-007（コミュニティカフェ - light）
+  {
+    id: 'report-022',
+    projectId: 'pj-007',
+    title: '物件が決まりました',
+    content: '世田谷区の住宅街に理想的な物件が見つかりました。駅から徒歩5分、路面店です。',
+    createdAt: '2024-11-01',
+    author: '川村洋子',
+  },
+  {
+    id: 'report-023',
+    projectId: 'pj-007',
+    title: 'CF開始と地域の反応',
+    content: '地域の方々から「こういう場所が欲しかった」という温かい声をいただいています。',
+    createdAt: '2024-12-01',
+    author: '川村洋子',
+  },
+  {
+    id: 'report-024',
+    projectId: 'pj-007',
+    title: '65%達成・メニュー開発中',
+    content: '地元農家さんと連携し、新鮮野菜を使ったランチメニューを開発中です。',
+    createdAt: '2025-01-05',
+    author: '川村洋子',
+  },
+  // pj-008（フードロス削減アプリ - pre_light）
+  {
+    id: 'report-025',
+    projectId: 'pj-008',
+    title: 'プロジェクト始動',
+    content: 'フードロス問題をテクノロジーで解決するアプリ「TASUKERU」のプロジェクトを開始しました。',
+    createdAt: '2024-12-15',
+    author: '長谷川健',
+  },
+  {
+    id: 'report-026',
+    projectId: 'pj-008',
+    title: '加盟店候補との面談開始',
+    content: '地域のスーパーや飲食店との面談を開始。すでに10店舗から前向きな回答をいただいています。',
+    createdAt: '2025-01-10',
+    author: '長谷川健',
   },
 ]
 
