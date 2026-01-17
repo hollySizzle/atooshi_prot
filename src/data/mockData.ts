@@ -816,4 +816,43 @@ export const projectMilestones: ProjectMilestone[] = [
   { id: 'ms-009', projectId: 'pj-002', phase: 3, title: 'プラットフォーム開発', description: 'EC基盤・決済・物流連携', status: 'completed', targetDate: '2024-10-31' },
   { id: 'ms-010', projectId: 'pj-002', phase: 4, title: 'テスト運用', description: '限定ユーザーでの検証', status: 'completed', targetDate: '2024-11-30' },
   { id: 'ms-011', projectId: 'pj-002', phase: 5, title: '正式リリース・運用中', description: '全国展開・生産者拡大', status: 'in_progress', targetDate: '2025-03-31' },
+  // pj-003（スマート農業IoT - pre_light）
+  { id: 'ms-012', projectId: 'pj-003', phase: 0, title: 'プロトタイプ開発', description: 'センサー・通信機能の検証', status: 'completed', targetDate: '2024-11-30' },
+  { id: 'ms-013', projectId: 'pj-003', phase: 1, title: 'チーム組成', description: 'ファームウェアエンジニア採用', status: 'in_progress', targetDate: '2025-01-31' },
+  { id: 'ms-014', projectId: 'pj-003', phase: 2, title: 'CF準備', description: 'リターン設計・ページ作成', status: 'pending', targetDate: '2025-02-28' },
+  { id: 'ms-015', projectId: 'pj-003', phase: 3, title: 'CF実施', description: '資金調達', status: 'pending', targetDate: '2025-04-30' },
+  { id: 'ms-016', projectId: 'pj-003', phase: 4, title: '量産・出荷', description: '金型製作・量産', status: 'pending', targetDate: '2025-08-31' },
+  // pj-004（オンライン学習 - light）
+  { id: 'ms-017', projectId: 'pj-004', phase: 0, title: 'コンセプト設計', description: 'ターゲット・カリキュラム設計', status: 'completed', targetDate: '2024-09-30' },
+  { id: 'ms-018', projectId: 'pj-004', phase: 1, title: 'チーム組成', description: '開発チーム・講師陣確保', status: 'completed', targetDate: '2024-10-31' },
+  { id: 'ms-019', projectId: 'pj-004', phase: 2, title: 'CF実施中', description: '資金調達・認知拡大', status: 'in_progress', targetDate: '2025-01-31' },
+  { id: 'ms-020', projectId: 'pj-004', phase: 3, title: 'プラットフォーム開発', description: '動画配信・決済機能', status: 'pending', targetDate: '2025-04-30' },
+  { id: 'ms-021', projectId: 'pj-004', phase: 4, title: 'コンテンツ制作', description: '5コース分の動画制作', status: 'pending', targetDate: '2025-06-30' },
+  { id: 'ms-022', projectId: 'pj-004', phase: 5, title: '正式リリース', description: 'サービス公開', status: 'pending', targetDate: '2025-07-31' },
+  // pj-005（サステナブルファッション - pre_light）
+  { id: 'ms-023', projectId: 'pj-005', phase: 0, title: 'ブランド設計', description: 'コンセプト・ロゴ・デザイン', status: 'completed', targetDate: '2024-12-31' },
+  { id: 'ms-024', projectId: 'pj-005', phase: 1, title: '素材調達先確保', description: 'サプライヤーとの提携', status: 'in_progress', targetDate: '2025-01-31' },
+  { id: 'ms-025', projectId: 'pj-005', phase: 2, title: 'サンプル制作', description: '第1弾ラインナップ試作', status: 'pending', targetDate: '2025-02-28' },
+  { id: 'ms-026', projectId: 'pj-005', phase: 3, title: 'CF実施', description: '資金調達', status: 'pending', targetDate: '2025-04-30' },
+  { id: 'ms-027', projectId: 'pj-005', phase: 4, title: '量産・EC構築', description: '製造・販売準備', status: 'pending', targetDate: '2025-07-31' },
+  // pj-006（ペット見守りAI - middle）
+  { id: 'ms-028', projectId: 'pj-006', phase: 0, title: 'AI開発', description: '行動認識モデル構築', status: 'completed', targetDate: '2024-04-30' },
+  { id: 'ms-029', projectId: 'pj-006', phase: 1, title: 'プロトタイプ', description: 'ハード・ソフト統合', status: 'completed', targetDate: '2024-06-30' },
+  { id: 'ms-030', projectId: 'pj-006', phase: 2, title: 'CF達成', description: '目標180万円達成（220万円調達）', status: 'completed', targetDate: '2024-07-31' },
+  { id: 'ms-031', projectId: 'pj-006', phase: 3, title: 'ベータテスト', description: '100世帯での実証', status: 'completed', targetDate: '2024-09-30' },
+  { id: 'ms-032', projectId: 'pj-006', phase: 4, title: '量産・出荷', description: '金型製作・量産・発送', status: 'completed', targetDate: '2024-12-31' },
+  { id: 'ms-033', projectId: 'pj-006', phase: 5, title: '運用・改善', description: 'ユーザーFB反映・機能追加', status: 'in_progress', targetDate: '2025-06-30' },
+  // pj-007（コミュニティカフェ - light）
+  { id: 'ms-034', projectId: 'pj-007', phase: 0, title: '物件選定', description: '立地調査・契約', status: 'completed', targetDate: '2024-10-31' },
+  { id: 'ms-035', projectId: 'pj-007', phase: 1, title: 'コンセプト設計', description: 'メニュー・内装デザイン', status: 'completed', targetDate: '2024-11-30' },
+  { id: 'ms-036', projectId: 'pj-007', phase: 2, title: 'CF実施中', description: '資金調達', status: 'in_progress', targetDate: '2025-02-15' },
+  { id: 'ms-037', projectId: 'pj-007', phase: 3, title: '内装工事', description: '店舗改装', status: 'pending', targetDate: '2025-03-31' },
+  { id: 'ms-038', projectId: 'pj-007', phase: 4, title: 'オープン', description: 'グランドオープン', status: 'pending', targetDate: '2025-04-15' },
+  // pj-008（フードロス削減アプリ - pre_light）
+  { id: 'ms-039', projectId: 'pj-008', phase: 0, title: 'コンセプト設計', description: '市場調査・要件定義', status: 'completed', targetDate: '2024-12-31' },
+  { id: 'ms-040', projectId: 'pj-008', phase: 1, title: '加盟店開拓', description: 'パートナー店舗確保', status: 'in_progress', targetDate: '2025-02-28' },
+  { id: 'ms-041', projectId: 'pj-008', phase: 2, title: 'チーム組成', description: 'エンジニア・デザイナー採用', status: 'pending', targetDate: '2025-03-31' },
+  { id: 'ms-042', projectId: 'pj-008', phase: 3, title: 'CF実施', description: '資金調達', status: 'pending', targetDate: '2025-05-31' },
+  { id: 'ms-043', projectId: 'pj-008', phase: 4, title: 'MVP開発', description: 'アプリ開発', status: 'pending', targetDate: '2025-09-30' },
+  { id: 'ms-044', projectId: 'pj-008', phase: 5, title: 'テスト運用', description: '限定エリアでの検証', status: 'pending', targetDate: '2025-11-30' },
 ]
