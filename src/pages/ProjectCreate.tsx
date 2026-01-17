@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import CreateIcon from '@mui/icons-material/Create'
 import TitleIcon from '@mui/icons-material/Title'
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote'
@@ -7,6 +8,13 @@ import DescriptionIcon from '@mui/icons-material/Description'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 export default function ProjectCreate() {
+  const navigate = useNavigate()
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    navigate('/projects/create/team')
+  }
+
   return (
     <div className="py-8">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +28,7 @@ export default function ProjectCreate() {
           </div>
 
           <div className="card p-6">
-            <form className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-medium text-brand-dark flex items-center gap-1">
                   <TitleIcon fontSize="small" className="text-brand-teal" />
