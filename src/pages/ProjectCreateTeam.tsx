@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import GroupsIcon from '@mui/icons-material/Groups'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import BadgeIcon from '@mui/icons-material/Badge'
@@ -9,7 +9,26 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import CloseIcon from '@mui/icons-material/Close'
 
 export default function ProjectCreateTeam() {
-  const [roles, setRoles] = useState([{ id: 1, name: '', count: '' }])
+  const navigate = useNavigate()
+  
+  const [formData, setFormData] = useState(() => {
+    const saved = localStorage.getItem('projectCreate_team')
+    return saved ? JSON.parse(saved) : {
+      ownerName: '',
+      organization: '',
+      teamDescription: ''
+    }
+  })
+
+  const [roles, setRoles] = useState(() => {
+    const saved = localStorage.getItem('projectCreate_roles')
+    return saved ? JSON.parse(saved) : [{ id: 1, name: '', count: '' }]
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev: typeof formData) => ({ ...prev, [name]: value }))
+  }
 
   const addRole = () => {
     setRoles([...roles, { id: Date.now(), name: '', count: '' }])
@@ -17,14 +36,21 @@ export default function ProjectCreateTeam() {
 
   const removeRole = (id: number) => {
     if (roles.length > 1) {
-      setRoles(roles.filter(role => role.id !== id))
+      setRoles(roles.filter((role: { id: number }) => role.id !== id))
     }
   }
 
   const updateRole = (id: number, field: 'name' | 'count', value: string) => {
-    setRoles(roles.map(role => 
+    setRoles(roles.map((role: { id: number; name: string; count: string }) => 
       role.id === id ? { ...role, [field]: value } : role
     ))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    localStorage.setItem('projectCreate_team', JSON.stringify(formData))
+    localStorage.setItem('projectCreate_roles', JSON.stringify(roles))
+    navigate('/projects/create/confirm')
   }
 
   return (
@@ -58,7 +84,7 @@ export default function ProjectCreateTeam() {
           </div>
 
           <div className="card p-6">
-            <form className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
                 <label className="text-sm font-medium text-brand-dark flex items-center gap-1">
                   <BadgeIcon fontSize="small" className="text-brand-teal" />
@@ -66,6 +92,9 @@ export default function ProjectCreateTeam() {
                 </label>
                 <input
                   type="text"
+                  name="ownerName"
+                  value={formData.ownerName}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-teal focus:border-transparent"
                   placeholder="例：山田太郎"
                 />
@@ -78,6 +107,9 @@ export default function ProjectCreateTeam() {
                 </label>
                 <input
                   type="text"
+                  name="organization"
+                  value={formData.organization}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-teal focus:border-transparent"
                   placeholder="例：株式会社エコテック"
                 />
@@ -89,7 +121,7 @@ export default function ProjectCreateTeam() {
                   募集するコミッター
                 </label>
                 <div className="flex flex-col gap-3">
-                  {roles.map((role) => (
+                  {roles.map((role: { id: number; name: string; count: string }) => (
                     <div key={role.id} className="flex gap-2 items-center">
                       <input
                         type="text"
@@ -134,6 +166,9 @@ export default function ProjectCreateTeam() {
                   チーム体制の説明
                 </label>
                 <textarea
+                  name="teamDescription"
+                  value={formData.teamDescription}
+                  onChange={handleChange}
                   rows={4}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-teal focus:border-transparent"
                   placeholder="どのようなチーム体制でプロジェクトを進めるか説明してください..."
