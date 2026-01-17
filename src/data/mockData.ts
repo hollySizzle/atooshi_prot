@@ -332,6 +332,8 @@ export interface User {
   role: 'innovator' | 'committer' | 'investor'
   title: string
   avatar?: string
+  skills?: string[]
+  bio?: string
 }
 
 export const users: User[] = [
@@ -340,18 +342,24 @@ export const users: User[] = [
     name: '田中太郎',
     role: 'innovator',
     title: 'スタートアップ創業者',
+    bio: '環境問題に関心を持ち、サステナブルビジネスを10年以上経験。前職は大手商社で新規事業開発を担当。',
+    skills: ['事業開発', 'プロジェクト管理', '資金調達'],
   },
   {
     id: 'user-002',
     name: '山田花子',
     role: 'committer',
     title: '元大手メーカー製造管理',
+    bio: '大手アパレルメーカーで20年間製造管理を担当。品質管理と生産効率化のスペシャリスト。',
+    skills: ['製造管理', '品質管理', 'サプライチェーン'],
   },
   {
     id: 'user-003',
     name: '佐藤一郎',
     role: 'committer',
-    title: 'フリーランスエンジニア',
+    title: 'フリーランスデザイナー',
+    bio: 'プロダクトデザイン歴15年。環境配慮型製品のデザインを得意とする。',
+    skills: ['プロダクトデザイン', 'UI/UX', 'ブランディング'],
   },
   {
     id: 'user-004',
@@ -359,4 +367,182 @@ export const users: User[] = [
     role: 'investor',
     title: '事業投資部門',
   },
+  // pj-002 用
+  {
+    id: 'user-005',
+    name: '高橋誠',
+    role: 'innovator',
+    title: '地方創生コンサルタント',
+    bio: '地方自治体との連携事業を15年以上手がける。全国47都道府県の生産者ネットワークを持つ。',
+    skills: ['地方創生', '事業開発', 'ネットワーキング'],
+  },
+  {
+    id: 'user-006',
+    name: '中村美咲',
+    role: 'committer',
+    title: 'フルスタックエンジニア',
+    bio: '大手ECサイトで7年間開発リーダーを務めた後、フリーランスに転身。決済・物流システムに精通。',
+    skills: ['React', 'Node.js', 'AWS', 'EC開発'],
+  },
+  {
+    id: 'user-007',
+    name: '木村健太',
+    role: 'committer',
+    title: 'Webデザイナー',
+    bio: '食品・農業関連のブランディングを専門とするデザイナー。生産者の想いを伝えるデザインが得意。',
+    skills: ['Webデザイン', 'ブランディング', '写真撮影'],
+  },
+  {
+    id: 'user-008',
+    name: '小林由香',
+    role: 'committer',
+    title: 'マーケティングマネージャー',
+    bio: '食品メーカーでデジタルマーケティングを10年担当。SNS運用とコンテンツマーケティングの専門家。',
+    skills: ['デジタルマーケティング', 'SNS運用', 'コンテンツ制作'],
+  },
+  {
+    id: 'user-009',
+    name: '渡辺翔',
+    role: 'committer',
+    title: 'カスタマーサクセス',
+    bio: 'SaaS企業でCS部門を立ち上げた経験を持つ。生産者と消費者の橋渡し役として活躍中。',
+    skills: ['カスタマーサポート', '業務設計', 'コミュニケーション'],
+  },
+]
+
+// チームメンバー（プロジェクトごと）
+export interface TeamMember {
+  userId: string
+  projectId: string
+  role: 'innovator' | 'committer'
+  position: string
+  joinedAt: string
+  track?: 'Entry' | 'Candidate' | 'Core' | 'Boarding'
+}
+
+export const teamMembers: TeamMember[] = [
+  // pj-001
+  { userId: 'user-001', projectId: 'pj-001', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-10-01' },
+  { userId: 'user-002', projectId: 'pj-001', role: 'committer', position: '製造管理', joinedAt: '2024-11-15', track: 'Core' },
+  { userId: 'user-003', projectId: 'pj-001', role: 'committer', position: 'プロダクトデザイン', joinedAt: '2024-12-01', track: 'Candidate' },
+  // pj-002
+  { userId: 'user-005', projectId: 'pj-002', role: 'innovator', position: 'プロジェクトオーナー', joinedAt: '2024-06-01' },
+  { userId: 'user-006', projectId: 'pj-002', role: 'committer', position: 'リードエンジニア', joinedAt: '2024-07-01', track: 'Boarding' },
+  { userId: 'user-007', projectId: 'pj-002', role: 'committer', position: 'デザイナー', joinedAt: '2024-07-15', track: 'Core' },
+  { userId: 'user-008', projectId: 'pj-002', role: 'committer', position: 'マーケティング', joinedAt: '2024-08-01', track: 'Core' },
+  { userId: 'user-009', projectId: 'pj-002', role: 'committer', position: 'カスタマーサクセス', joinedAt: '2024-09-01', track: 'Candidate' },
+]
+
+// 活動報告
+export interface ActivityReport {
+  id: string
+  projectId: string
+  title: string
+  content: string
+  createdAt: string
+  author: string
+}
+
+export const activityReports: ActivityReport[] = [
+  // pj-001
+  {
+    id: 'report-001',
+    projectId: 'pj-001',
+    title: 'プロジェクト開始のご報告',
+    content: 'このたびクラウドファンディングを開始しました。廃棄素材を活用したエコバッグで、環境問題解決に貢献します。',
+    createdAt: '2024-12-01',
+    author: '田中太郎',
+  },
+  {
+    id: 'report-002',
+    projectId: 'pj-001',
+    title: '製造パートナーが決定しました',
+    content: '熟練職人を擁する国内縫製工場との提携が決まりました。品質にこだわった製品をお届けできます。',
+    createdAt: '2024-12-15',
+    author: '田中太郎',
+  },
+  {
+    id: 'report-003',
+    projectId: 'pj-001',
+    title: '目標金額50%達成！',
+    content: '皆様のご支援により、目標金額の50%を達成しました。引き続きよろしくお願いいたします。',
+    createdAt: '2025-01-05',
+    author: '田中太郎',
+  },
+  {
+    id: 'report-004',
+    projectId: 'pj-001',
+    title: 'サンプル完成のご報告',
+    content: '最初のサンプルが完成しました。デザイン・品質ともに想定以上の仕上がりです。',
+    createdAt: '2025-01-10',
+    author: '山田花子',
+  },
+  // pj-002
+  {
+    id: 'report-005',
+    projectId: 'pj-002',
+    title: 'クラウドファンディング達成のお礼',
+    content: '目標金額200万円を達成し、最終的に210万円のご支援をいただきました。89名の支援者の皆様、本当にありがとうございます！',
+    createdAt: '2024-09-01',
+    author: '高橋誠',
+  },
+  {
+    id: 'report-006',
+    projectId: 'pj-002',
+    title: 'プラットフォーム開発進捗',
+    content: 'ECサイトの基盤が完成しました。決済機能・配送連携のテストも順調に進んでいます。',
+    createdAt: '2024-10-15',
+    author: '中村美咲',
+  },
+  {
+    id: 'report-007',
+    projectId: 'pj-002',
+    title: '生産者登録100名突破！',
+    content: '全国から156名の生産者様にご登録いただきました。北海道から沖縄まで、各地の名産品が揃ってきています。',
+    createdAt: '2024-11-20',
+    author: '高橋誠',
+  },
+  {
+    id: 'report-008',
+    projectId: 'pj-002',
+    title: 'テスト運用開始',
+    content: '限定ユーザーへのテスト運用を開始しました。初月で50件の注文を達成。ユーザーからの評価も上々です。',
+    createdAt: '2024-12-10',
+    author: '渡辺翔',
+  },
+  {
+    id: 'report-009',
+    projectId: 'pj-002',
+    title: '月間流通額500万円達成',
+    content: '正式リリースから2ヶ月で月間流通額500万円を突破しました。リピーターも増えており、安定した成長を見せています。',
+    createdAt: '2025-01-05',
+    author: '小林由香',
+  },
+]
+
+// プロジェクト進捗（クリティカルパス）
+export interface ProjectMilestone {
+  id: string
+  projectId: string
+  phase: number
+  title: string
+  description: string
+  status: 'completed' | 'in_progress' | 'pending'
+  targetDate: string
+}
+
+export const projectMilestones: ProjectMilestone[] = [
+  // pj-001
+  { id: 'ms-001', projectId: 'pj-001', phase: 0, title: 'アイデア検証', description: '市場調査・ニーズ確認', status: 'completed', targetDate: '2024-10-31' },
+  { id: 'ms-002', projectId: 'pj-001', phase: 1, title: 'チーム組成', description: 'コミッターとのマッチング', status: 'completed', targetDate: '2024-11-30' },
+  { id: 'ms-003', projectId: 'pj-001', phase: 2, title: 'CF実施中', description: '資金調達・支援者獲得', status: 'in_progress', targetDate: '2025-01-31' },
+  { id: 'ms-004', projectId: 'pj-001', phase: 3, title: '製造開始', description: '量産・品質管理', status: 'pending', targetDate: '2025-03-31' },
+  { id: 'ms-005', projectId: 'pj-001', phase: 4, title: 'リターン発送', description: '支援者への製品配送', status: 'pending', targetDate: '2025-04-30' },
+  // pj-002
+  { id: 'ms-006', projectId: 'pj-002', phase: 0, title: 'アイデア検証', description: '生産者ヒアリング・市場調査', status: 'completed', targetDate: '2024-06-30' },
+  { id: 'ms-007', projectId: 'pj-002', phase: 1, title: 'チーム組成', description: 'エンジニア・デザイナー採用', status: 'completed', targetDate: '2024-07-31' },
+  { id: 'ms-008', projectId: 'pj-002', phase: 2, title: 'CF達成', description: '目標200万円達成（210万円調達）', status: 'completed', targetDate: '2024-08-31' },
+  { id: 'ms-009', projectId: 'pj-002', phase: 3, title: 'プラットフォーム開発', description: 'EC基盤・決済・物流連携', status: 'completed', targetDate: '2024-10-31' },
+  { id: 'ms-010', projectId: 'pj-002', phase: 4, title: 'テスト運用', description: '限定ユーザーでの検証', status: 'completed', targetDate: '2024-11-30' },
+  { id: 'ms-011', projectId: 'pj-002', phase: 5, title: '正式リリース・運用中', description: '全国展開・生産者拡大', status: 'in_progress', targetDate: '2025-03-31' },
 ]

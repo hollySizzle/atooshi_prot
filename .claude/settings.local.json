@@ -21,7 +21,11 @@
       "Bash(sudo apt-get update:*)",
       "Bash(sudo apt-get:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__think_about_collected_information",
+      "mcp__serena__think_about_whether_you_are_done"
     ]
   },
   "enableAllProjectMcpServers": true,
