@@ -2,11 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import BuildIcon from '@mui/icons-material/Build'
 import CodeIcon from '@mui/icons-material/Code'
-import PaletteIcon from '@mui/icons-material/Palette'
-import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing'
-import LocalShippingIcon from '@mui/icons-material/LocalShipping'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
-import HeadsetMicIcon from '@mui/icons-material/HeadsetMic'
 import WorkIcon from '@mui/icons-material/Work'
 import PaidIcon from '@mui/icons-material/Paid'
 import ScheduleIcon from '@mui/icons-material/Schedule'
@@ -23,41 +19,39 @@ import SendIcon from '@mui/icons-material/Send'
 const opportunities = [
   {
     id: 1,
-    project: 'エコバッグ製造プロジェクト',
-    role: '物流管理',
-    skills: ['物流', '在庫管理'],
-    bounty: 50000,
-    deadline: '2024/02/28',
-    timebox: 15,
+    project: 'AI搭載ヘルスケアアプリ開発',
+    role: 'CTO候補',
+    skills: ['技術戦略', 'マネジメント', 'アーキテクチャ'],
+    bounty: 200000,
+    deadline: '2024/03/31',
+    timebox: 40,
   },
   {
     id: 2,
-    project: 'エコバッグ製造プロジェクト',
-    role: 'カスタマーサポート',
-    skills: ['CS', 'コミュニケーション'],
-    bounty: 30000,
+    project: 'サステナブルファッションEC立ち上げ',
+    role: '事業開発アドバイザー',
+    skills: ['事業開発', '経営戦略', 'アライアンス'],
+    bounty: 150000,
     deadline: '2024/03/15',
-    timebox: 10,
+    timebox: 30,
   },
   {
     id: 3,
-    project: 'スマート農業IoTデバイス開発',
-    role: 'ファームウェアエンジニア',
-    skills: ['組み込み', 'C言語', 'IoT'],
-    bounty: 80000,
-    deadline: '2024/02/20',
-    timebox: 20,
+    project: 'シリーズA調達を目指すSaaSスタートアップ',
+    role: 'CFO候補',
+    skills: ['財務', '資金調達', 'IPO準備'],
+    bounty: 180000,
+    deadline: '2024/04/15',
+    timebox: 35,
   },
 ]
 
 const skillIcons: Record<string, React.ElementType> = {
   'すべて': BuildIcon,
-  'エンジニア': CodeIcon,
-  'デザイン': PaletteIcon,
-  '製造': PrecisionManufacturingIcon,
-  '物流': LocalShippingIcon,
-  'マーケ': TrendingUpIcon,
-  'CS': HeadsetMicIcon,
+  '経営': TrendingUpIcon,
+  '技術': CodeIcon,
+  '財務': PaidIcon,
+  '事業開発': RocketLaunchIcon,
 }
 
 export default function CommitterMatch() {
@@ -97,7 +91,7 @@ export default function CommitterMatch() {
 
           {/* Skills Filter */}
           <div className="flex flex-wrap gap-2">
-            {['すべて', 'エンジニア', 'デザイン', '製造', '物流', 'マーケ', 'CS'].map((skill) => {
+            {['すべて', '経営', '技術', '財務', '事業開発'].map((skill) => {
               const SkillIcon = skillIcons[skill]
               return (
                 <button

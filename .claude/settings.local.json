@@ -32,7 +32,8 @@
       "Bash(npm run test:run:*)",
       "Bash(timeout 10 npm run dev:*)",
       "Bash(npx vitest:*)",
-      "Bash(gh issue create:*)"
+      "Bash(gh issue create:*)",
+      "Bash(ls:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
