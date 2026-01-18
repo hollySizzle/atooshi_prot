@@ -12,6 +12,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty'
 
 export default function Dashboard() {
   const [role, setRole] = useState<'innovator' | 'committer'>('innovator')
@@ -25,14 +26,22 @@ export default function Dashboard() {
               <DashboardIcon />
               ダッシュボード
             </h1>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value as 'innovator' | 'committer')}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-brand-dark"
-            >
-              <option value="innovator">イノベーター</option>
-              <option value="committer">コミッター</option>
-            </select>
+            <div className="flex items-center gap-3">
+              {role === 'innovator' && (
+                <button className="btn btn--primary flex items-center gap-2">
+                  <AccountBalanceWalletIcon fontSize="small" />
+                  調達申請
+                </button>
+              )}
+              <select
+                value={role}
+                onChange={(e) => setRole(e.target.value as 'innovator' | 'committer')}
+                className="px-4 py-2 border border-gray-300 rounded-lg text-brand-dark"
+              >
+                <option value="innovator">イノベーター</option>
+                <option value="committer">コミッター</option>
+              </select>
+            </div>
           </div>
 
           {/* Stats Cards */}
@@ -62,11 +71,11 @@ export default function Dashboard() {
                 <div className="card p-4">
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                      <AccountBalanceWalletIcon fontSize="small" className="text-yellow-500" />
-                      <p className="text-sm text-brand-gray">Bounty Pool</p>
+                      <HourglassEmptyIcon fontSize="small" className="text-brand-teal" />
+                      <p className="text-sm text-brand-gray">検収待ち</p>
                     </div>
-                    <p className="text-2xl font-bold text-brand-dark">¥120,000</p>
-                    <p className="text-sm text-brand-gray">/¥300,000</p>
+                    <p className="text-2xl font-bold text-brand-dark">2件</p>
+                    <p className="text-sm text-brand-gray">要対応</p>
                   </div>
                 </div>
                 <div className="card p-4">
