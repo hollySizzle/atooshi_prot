@@ -203,7 +203,7 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="py-8">
+    <div className="py-8 pb-24 lg:pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-4">
           <Link to="/projects" className="text-brand-teal hover:underline inline-flex items-center gap-1">
@@ -211,9 +211,9 @@ export default function ProjectDetail() {
             プロジェクト一覧に戻る
           </Link>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="flex flex-col lg:flex-row gap-8">
             {/* Main Content */}
-            <div className="lg:col-span-2">
+            <div className="flex-1 min-w-0">
               <div className="flex flex-col gap-6">
                 <div className="h-64 md:h-96 rounded-lg overflow-hidden">
                   <img
@@ -236,22 +236,22 @@ export default function ProjectDetail() {
                 </div>
 
                 {/* Tabs */}
-                <div className="border-b border-brand-light overflow-x-auto">
-                  <nav className="flex gap-4 md:gap-8 min-w-max">
+                <div className="border-b border-brand-light overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+                  <nav className="flex gap-1 sm:gap-4 md:gap-6">
                     {tabs.map((tab, i) => {
                       const TabIcon = tabIcons[i]
                       return (
                         <button
                           key={tab}
                           onClick={() => setActiveTab(i)}
-                          className={`py-3 border-b-2 font-medium text-sm transition-colors flex items-center gap-1 whitespace-nowrap ${
+                          className={`py-3 px-2 sm:px-0 border-b-2 font-medium text-sm transition-colors flex items-center gap-1 whitespace-nowrap ${
                             i === activeTab
                               ? 'border-brand-teal text-brand-teal'
                               : 'border-transparent text-brand-gray hover:text-brand-dark'
                           }`}
                         >
                           <TabIcon fontSize="small" />
-                          {tab}
+                          <span className="hidden sm:inline">{tab}</span>
                         </button>
                       )
                     })}
@@ -263,8 +263,8 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
+            {/* Sidebar - PC only */}
+            <div className="hidden lg:block lg:w-80 xl:w-96 flex-shrink-0">
               <div className="card p-6 sticky top-8">
                 <div className="flex flex-col gap-6">
                   <div className="flex flex-col gap-2">
@@ -274,7 +274,7 @@ export default function ProjectDetail() {
                         style={{ width: `${Math.min((project.currentAmount / project.goalAmount) * 100, 100)}%` }}
                       />
                     </div>
-                    <p className="text-3xl font-bold text-brand-dark">¥{project.currentAmount.toLocaleString()}</p>
+                      <p className="text-3xl font-bold text-brand-dark">¥{project.currentAmount.toLocaleString()}</p>
                     <p className="text-brand-gray">目標 ¥{project.goalAmount.toLocaleString()}</p>
                     <div className="flex gap-4 text-sm text-brand-gray">
                       <span className="flex items-center gap-1">
@@ -310,6 +310,35 @@ export default function ProjectDetail() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Fixed Footer */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-brand-light p-3 lg:hidden z-50">
+        <div className="max-w-7xl mx-auto flex items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="text-lg font-bold text-brand-dark truncate">¥{project.currentAmount.toLocaleString()}</p>
+            <div className="flex items-center gap-2 text-xs text-brand-gray">
+              <span className="flex items-center gap-1">
+                <PeopleIcon sx={{ fontSize: 14 }} />
+                {project.backerCount}名
+              </span>
+              <span className="flex items-center gap-1">
+                <ScheduleIcon sx={{ fontSize: 14 }} />
+                残り{project.daysLeft ?? '-'}日
+              </span>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <button className="btn btn--primary px-4 py-2 flex items-center gap-1 text-sm">
+              <FavoriteIcon sx={{ fontSize: 18 }} />
+              支援する
+            </button>
+            <Link to="/match" className="btn btn--committer px-3 py-2 flex items-center gap-1 text-sm">
+              <BuildIcon sx={{ fontSize: 18 }} />
+              参画
+            </Link>
           </div>
         </div>
       </div>
