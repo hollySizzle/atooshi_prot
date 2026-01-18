@@ -13,6 +13,8 @@ export default {
           gray: '#636E72',      // サブテキスト
           dark: '#2D3436',      // メインテキスト
           green: '#10B981',     // CTA
+          light: '#F8FAFC',     // 背景ライト
+          'light-gray': '#E2E8F0', // 進捗バー背景
         },
         // ユーザータイプカラー
         innovator: {

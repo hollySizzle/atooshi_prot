@@ -856,3 +856,270 @@ export const projectMilestones: ProjectMilestone[] = [
   { id: 'ms-043', projectId: 'pj-008', phase: 4, title: 'MVP開発', description: 'アプリ開発', status: 'pending', targetDate: '2025-09-30' },
   { id: 'ms-044', projectId: 'pj-008', phase: 5, title: 'テスト運用', description: '限定エリアでの検証', status: 'pending', targetDate: '2025-11-30' },
 ]
+
+// ========================================
+// タイムボックス報酬（Phase 0: Pre-Light）
+// イノベーターから直接支払われる少額報酬
+// ========================================
+export interface TimeboxReward {
+  id: string
+  committerId: string
+  projectId: string
+  projectTitle: string
+  deliverableTitle: string
+  timeboxHours: number      // タイムボックス時間（2〜6時間）
+  rewardAmount: number      // 報酬額（少額固定）
+  status: 'pending' | 'in_progress' | 'submitted' | 'accepted' | 'paid'
+  submittedAt?: string
+  acceptedAt?: string
+  paidAt?: string
+}
+
+export const timeboxRewards: TimeboxReward[] = [
+  // 佐藤一郎 (user-003) - pj-001 Phase 0参画
+  {
+    id: 'tb-001',
+    committerId: 'user-003',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: 'ロゴデザイン初稿',
+    timeboxHours: 4,
+    rewardAmount: 20000,
+    status: 'paid',
+    submittedAt: '2024-11-20',
+    acceptedAt: '2024-11-22',
+    paidAt: '2024-11-25',
+  },
+  {
+    id: 'tb-002',
+    committerId: 'user-003',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: 'デザインコンセプト案',
+    timeboxHours: 3,
+    rewardAmount: 15000,
+    status: 'paid',
+    submittedAt: '2024-11-28',
+    acceptedAt: '2024-11-30',
+    paidAt: '2024-12-03',
+  },
+  // 山田花子 (user-002) - pj-001 Phase 0参画
+  {
+    id: 'tb-003',
+    committerId: 'user-002',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: '製造可能性調査',
+    timeboxHours: 6,
+    rewardAmount: 30000,
+    status: 'paid',
+    submittedAt: '2024-11-15',
+    acceptedAt: '2024-11-18',
+    paidAt: '2024-11-20',
+  },
+  // 松本大輔 (user-011) - pj-003 Phase 0参画
+  {
+    id: 'tb-004',
+    committerId: 'user-011',
+    projectId: 'pj-003',
+    projectTitle: 'スマート農業IoTデバイス開発',
+    deliverableTitle: 'ファームウェア設計書',
+    timeboxHours: 4,
+    rewardAmount: 20000,
+    status: 'in_progress',
+  },
+]
+
+// ========================================
+// シャドウストック（Phase 1以降: Light/Middle）
+// CFで調達したBounty Poolからの報酬
+// ファントムストックとも呼ばれる
+// ========================================
+export interface ShadowStockReward {
+  id: string
+  committerId: string
+  projectId: string
+  projectTitle: string
+  deliverableTitle: string
+  rewardAmount: number      // Bounty Poolからの報酬額
+  status: 'pending' | 'in_progress' | 'submitted' | 'accepted' | 'paid'
+  submittedAt?: string
+  acceptedAt?: string
+  paidAt?: string
+}
+
+export const shadowStockRewards: ShadowStockReward[] = [
+  // 山田花子 (user-002) - pj-001 Phase 1
+  {
+    id: 'ss-001',
+    committerId: 'user-002',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: '試作品監修',
+    rewardAmount: 30000,
+    status: 'paid',
+    submittedAt: '2024-01-18',
+    acceptedAt: '2024-01-20',
+    paidAt: '2024-01-25',
+  },
+  {
+    id: 'ss-002',
+    committerId: 'user-002',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: '試作品レビュー',
+    rewardAmount: 30000,
+    status: 'paid',
+    submittedAt: '2024-01-28',
+    acceptedAt: '2024-02-01',
+    paidAt: '2024-02-05',
+  },
+  {
+    id: 'ss-003',
+    committerId: 'user-002',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: '製造ライン確定',
+    rewardAmount: 40000,
+    status: 'in_progress',
+  },
+  // 佐藤一郎 (user-003) - pj-001 Phase 1
+  {
+    id: 'ss-004',
+    committerId: 'user-003',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: '最終デザイン',
+    rewardAmount: 50000,
+    status: 'submitted',
+    submittedAt: '2024-02-01',
+  },
+  {
+    id: 'ss-005',
+    committerId: 'user-003',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    deliverableTitle: 'パッケージデザイン',
+    rewardAmount: 30000,
+    status: 'in_progress',
+  },
+  // 中村美咲 (user-006) - pj-002 Phase 1/2
+  {
+    id: 'ss-006',
+    committerId: 'user-006',
+    projectId: 'pj-002',
+    projectTitle: '地域特産品ECプラットフォーム',
+    deliverableTitle: 'EC基盤構築',
+    rewardAmount: 150000,
+    status: 'paid',
+    submittedAt: '2024-09-15',
+    acceptedAt: '2024-09-20',
+    paidAt: '2024-09-25',
+  },
+  {
+    id: 'ss-007',
+    committerId: 'user-006',
+    projectId: 'pj-002',
+    projectTitle: '地域特産品ECプラットフォーム',
+    deliverableTitle: '決済機能実装',
+    rewardAmount: 100000,
+    status: 'paid',
+    submittedAt: '2024-10-10',
+    acceptedAt: '2024-10-15',
+    paidAt: '2024-10-20',
+  },
+  {
+    id: 'ss-008',
+    committerId: 'user-006',
+    projectId: 'pj-002',
+    projectTitle: '地域特産品ECプラットフォーム',
+    deliverableTitle: '物流連携API',
+    rewardAmount: 80000,
+    status: 'paid',
+    submittedAt: '2024-11-05',
+    acceptedAt: '2024-11-10',
+    paidAt: '2024-11-15',
+  },
+]
+
+// コミッターのシャドウストック割当サマリー（プロジェクト別）
+export interface CommitterShadowStock {
+  committerId: string
+  projectId: string
+  projectTitle: string
+  totalAllocated: number    // Bounty Poolからの割り当て総額
+  totalEarned: number       // 獲得済み（支払完了）
+  pending: number           // 検収待ち
+  inProgress: number        // 作業中
+}
+
+export const committerShadowStocks: CommitterShadowStock[] = [
+  {
+    committerId: 'user-002',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    totalAllocated: 100000,
+    totalEarned: 60000,
+    pending: 0,
+    inProgress: 40000,
+  },
+  {
+    committerId: 'user-003',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    totalAllocated: 80000,
+    totalEarned: 0,
+    pending: 50000,
+    inProgress: 30000,
+  },
+  {
+    committerId: 'user-006',
+    projectId: 'pj-002',
+    projectTitle: '地域特産品ECプラットフォーム',
+    totalAllocated: 330000,
+    totalEarned: 330000,
+    pending: 0,
+    inProgress: 0,
+  },
+]
+
+// コミッターのタイムボックス報酬サマリー（プロジェクト別）
+export interface CommitterTimeboxSummary {
+  committerId: string
+  projectId: string
+  projectTitle: string
+  totalHours: number        // 合計タイムボックス時間
+  totalEarned: number       // 獲得済み報酬
+  pending: number           // 検収待ち
+  inProgress: number        // 作業中
+}
+
+export const committerTimeboxSummaries: CommitterTimeboxSummary[] = [
+  {
+    committerId: 'user-003',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    totalHours: 7,
+    totalEarned: 35000,
+    pending: 0,
+    inProgress: 0,
+  },
+  {
+    committerId: 'user-002',
+    projectId: 'pj-001',
+    projectTitle: 'エコバッグ製造プロジェクト',
+    totalHours: 6,
+    totalEarned: 30000,
+    pending: 0,
+    inProgress: 0,
+  },
+  {
+    committerId: 'user-011',
+    projectId: 'pj-003',
+    projectTitle: 'スマート農業IoTデバイス開発',
+    totalHours: 4,
+    totalEarned: 0,
+    pending: 0,
+    inProgress: 20000,
+  },
+]

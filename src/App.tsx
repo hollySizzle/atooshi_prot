@@ -9,6 +9,7 @@ import ProjectCreateTeam from './pages/ProjectCreateTeam'
 import ProjectCreateConfirm from './pages/ProjectCreateConfirm'
 import CommitterMatch from './pages/CommitterMatch'
 import Dashboard from './pages/Dashboard'
+import CommitterRewards from './pages/CommitterRewards'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/match" element={<CommitterMatch />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/rewards" element={<CommitterRewards />} />
         </Routes>
       </main>
       <Footer />

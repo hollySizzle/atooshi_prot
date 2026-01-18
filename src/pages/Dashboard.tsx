@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'
 import GroupIcon from '@mui/icons-material/Group'
-import FolderIcon from '@mui/icons-material/Folder'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import PaidIcon from '@mui/icons-material/Paid'
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
@@ -13,6 +13,10 @@ import ScheduleIcon from '@mui/icons-material/Schedule'
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import SavingsIcon from '@mui/icons-material/Savings'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import { committerShadowStocks, committerTimeboxSummaries } from '../data/mockData'
 
 export default function Dashboard() {
   const [role, setRole] = useState<'innovator' | 'committer'>('innovator')
@@ -94,31 +98,46 @@ export default function Dashboard() {
                 <div className="card p-4">
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                      <FolderIcon fontSize="small" className="text-brand-teal" />
-                      <p className="text-sm text-brand-gray">参画PJ</p>
+                      <AccessTimeIcon fontSize="small" className="text-brand-teal" />
+                      <p className="text-sm text-brand-gray">タイムボックス報酬</p>
                     </div>
-                    <p className="text-2xl font-bold text-brand-dark">2</p>
-                    <p className="text-sm text-brand-gray">件</p>
+                    <p className="text-2xl font-bold text-brand-green">
+                      ¥{committerTimeboxSummaries
+                        .filter(s => s.committerId === 'user-003')
+                        .reduce((sum, s) => sum + s.totalEarned, 0)
+                        .toLocaleString()}
+                    </p>
+                    <p className="text-sm text-brand-gray">獲得済み</p>
                   </div>
                 </div>
                 <div className="card p-4">
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                      <AssignmentIcon fontSize="small" className="text-brand-green" />
-                      <p className="text-sm text-brand-gray">担当タスク</p>
+                      <SavingsIcon fontSize="small" className="text-brand-green" />
+                      <p className="text-sm text-brand-gray">シャドウストック</p>
                     </div>
-                    <p className="text-2xl font-bold text-brand-dark">3</p>
-                    <p className="text-sm text-brand-gray">件進行中</p>
+                    <p className="text-2xl font-bold text-brand-green">
+                      ¥{committerShadowStocks
+                        .filter(s => s.committerId === 'user-003')
+                        .reduce((sum, s) => sum + s.totalEarned, 0)
+                        .toLocaleString()}
+                    </p>
+                    <p className="text-sm text-brand-gray">獲得済み</p>
                   </div>
                 </div>
                 <div className="card p-4">
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
-                      <PaidIcon fontSize="small" className="text-brand-green" />
-                      <p className="text-sm text-brand-gray">獲得報酬</p>
+                      <HourglassEmptyIcon fontSize="small" className="text-brand-teal" />
+                      <p className="text-sm text-brand-gray">検収待ち</p>
                     </div>
-                    <p className="text-2xl font-bold text-brand-green">¥80,000</p>
-                    <p className="text-sm text-brand-gray">累計</p>
+                    <p className="text-2xl font-bold text-brand-teal">
+                      ¥{committerShadowStocks
+                        .filter(s => s.committerId === 'user-003')
+                        .reduce((sum, s) => sum + s.pending, 0)
+                        .toLocaleString()}
+                    </p>
+                    <p className="text-sm text-brand-gray">報酬予定</p>
                   </div>
                 </div>
                 <div className="card p-4">
@@ -127,8 +146,8 @@ export default function Dashboard() {
                       <RocketLaunchIcon fontSize="small" className="text-brand-dark" />
                       <p className="text-sm text-brand-gray">Boarding</p>
                     </div>
-                    <p className="text-2xl font-bold text-brand-dark">1</p>
-                    <p className="text-sm text-brand-gray">件昇格中</p>
+                    <p className="text-2xl font-bold text-brand-dark">Candidate</p>
+                    <p className="text-sm text-brand-gray">現在レベル</p>
                   </div>
                 </div>
               </>
@@ -183,47 +202,66 @@ export default function Dashboard() {
 
           {/* Committer View */}
           {role === 'committer' && (
-            <div className="card p-6">
-              <div className="flex flex-col gap-4">
-                <h2 className="text-xl font-bold text-brand-dark flex items-center gap-2">
-                  <AssignmentIcon />
-                  担当タスク
-                </h2>
+            <>
+              {/* 報酬管理へのリンク */}
+              <Link to="/rewards" className="card p-6 hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-brand-light rounded-lg">
+                      <PaidIcon className="text-brand-green" fontSize="large" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <h2 className="text-xl font-bold text-brand-dark">報酬管理</h2>
+                      <p className="text-sm text-brand-gray">タイムボックス報酬・シャドウストックの詳細を確認</p>
+                    </div>
+                  </div>
+                  <ArrowForwardIcon className="text-brand-gray" />
+                </div>
+              </Link>
+
+              {/* 担当タスク */}
+              <div className="card p-6">
                 <div className="flex flex-col gap-4">
-                  {[
-                    { project: 'エコバッグ製造プロジェクト', task: '最終デザイン', status: '提出済', deadline: '2024/02/01', reward: 50000 },
-                    { project: 'エコバッグ製造プロジェクト', task: 'パッケージデザイン', status: '作業中', deadline: '2024/02/10', reward: 30000 },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                      <div className="flex items-start gap-3">
-                        {item.status === '提出済' ? (
-                          <CheckCircleIcon className="text-brand-green flex-shrink-0" style={{ marginTop: '0.125rem' }} />
-                        ) : (
-                          <ScheduleIcon className="text-brand-teal flex-shrink-0" style={{ marginTop: '0.125rem' }} />
-                        )}
-                        <div className="flex flex-col gap-1">
-                          <p className="text-sm text-brand-gray">{item.project}</p>
-                          <p className="font-medium text-brand-dark">{item.task}</p>
-                          <p className="text-sm text-brand-gray flex items-center gap-1">
-                            <ScheduleIcon sx={{ fontSize: 14 }} />
-                            期限: {item.deadline}
+                  <h2 className="text-xl font-bold text-brand-dark flex items-center gap-2">
+                    <AssignmentIcon />
+                    担当タスク
+                  </h2>
+                  <div className="flex flex-col gap-4">
+                    {[
+                      { project: 'エコバッグ製造プロジェクト', task: '最終デザイン', status: '提出済', deadline: '2024/02/01', reward: 50000 },
+                      { project: 'エコバッグ製造プロジェクト', task: 'パッケージデザイン', status: '作業中', deadline: '2024/02/10', reward: 30000 },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center justify-between p-4 bg-brand-light rounded-lg">
+                        <div className="flex items-start gap-3">
+                          {item.status === '提出済' ? (
+                            <CheckCircleIcon className="text-brand-green flex-shrink-0" sx={{ marginTop: '0.125rem' }} />
+                          ) : (
+                            <ScheduleIcon className="text-brand-teal flex-shrink-0" sx={{ marginTop: '0.125rem' }} />
+                          )}
+                          <div className="flex flex-col gap-1">
+                            <p className="text-sm text-brand-gray">{item.project}</p>
+                            <p className="font-medium text-brand-dark">{item.task}</p>
+                            <p className="text-sm text-brand-gray flex items-center gap-1">
+                              <ScheduleIcon sx={{ fontSize: 14 }} />
+                              期限: {item.deadline}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="text-right flex flex-col gap-2">
+                          <span className={`badge ${item.status === '提出済' ? 'badge--committer' : 'badge--innovator'}`}>
+                            {item.status}
+                          </span>
+                          <p className="text-lg font-bold text-brand-green flex items-center justify-end gap-1">
+                            <PaidIcon fontSize="small" />
+                            ¥{item.reward.toLocaleString()}
                           </p>
                         </div>
                       </div>
-                      <div className="text-right flex flex-col gap-2">
-                        <span className={`badge ${item.status === '提出済' ? 'badge--committer' : 'badge--innovator'}`}>
-                          {item.status}
-                        </span>
-                        <p className="text-lg font-bold text-brand-green flex items-center justify-end gap-1">
-                          <PaidIcon fontSize="small" />
-                          ¥{item.reward.toLocaleString()}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>
