@@ -122,7 +122,7 @@ export default function ProjectCreateTeam() {
                 </label>
                 <div className="flex flex-col gap-3">
                   {roles.map((role: { id: number; name: string; count: string }) => (
-                    <div key={role.id} className="flex gap-2 items-center">
+                    <div key={role.id} className="flex flex-wrap gap-2 items-center">
                       <input
                         type="text"
                         value={role.name}
